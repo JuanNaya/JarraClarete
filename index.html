@@ -351,6 +351,7 @@ var TEE_META      = [
 var _players = [];
 var _gallery = [];
 var _galleryIdx = 0;
+var _galleries = {};
 
 function fetchJSON(path) {
   return fetch(RAW + '/' + path + '?_=' + Date.now())
@@ -415,6 +416,12 @@ function showRound(idx, btn) {
   document.querySelectorAll('.round-tab').forEach(function(t){ t.classList.remove('active'); });
   btn.classList.add('active');
   renderLb(idx);
+}
+
+function openGallery(year, idx) {
+  _gallery = _galleries[year] || [];
+  _galleryIdx = idx;
+  renderLightbox();
 }
 
 function openPhoto(idx) { _galleryIdx = idx; renderLightbox(); }
@@ -519,13 +526,23 @@ async function loadChampions(players) {
   var cl = document.getElementById('champions-list');
   cl.innerHTML = '';
   var champs = [];
-  players.forEach(function(p){ (p.campeon||[]).forEach(function(c){ champs.push(Object.assign({},c,{nombre:p.nombre,alias:p.alias})); }); });
-  champs.sort(function(a,b){ return b.ano-a.ano; }).forEach(function(c) {
+  players.forEach(function(p) {
+    (p.campeon||[]).forEach(function(c) {
+      var anyo = c.año || c.ano || c.year || '?';
+      champs.push({anyo:anyo, campo:c.campo, url:c.url, lugar:c.lugar, nombre:p.nombre, alias:p.alias, id:p.id});
+    });
+  });
+  champs.sort(function(a,b){ return b.anyo - a.anyo; });
+  champs.forEach(function(c) {
+    var ini = c.nombre.split(' ').map(function(w){return w[0];}).join('').slice(0,2).toUpperCase();
+    var avatar = '<div style="width:48px;height:48px;border-radius:50%;border:2px solid var(--gold);overflow:hidden;flex-shrink:0;background:var(--navy);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1rem;color:var(--gold)">'
+      + '<img src="' + BASE + '/jugadores/' + c.id + '/Profile.png" style="width:100%;height:100%;object-fit:cover" onerror="this.parentElement.textContent=\'' + ini + '\'">'
+      + '</div>';
     cl.innerHTML += '<div class="champion-row">'
-      + '<div class="champ-year-col">'+c.ano+'</div>'
-      + '<img src="'+OPEN_ICON+'" class="champ-icon" alt="" onerror="this.style.display=\'none\'">'
-      + '<div class="champ-info"><div class="champ-name-row">'+c.nombre+'<span class="c-aka">'+c.alias+'</span></div>'
-      + '<div class="champ-course-row"><a href="'+c.url+'" target="_blank">'+c.campo+'</a> \u00b7 '+c.lugar+'</div></div>'
+      + '<div class="champ-year-col">' + c.anyo + '</div>'
+      + avatar
+      + '<div class="champ-info"><div class="champ-name-row">' + c.nombre + '<span class="c-aka">' + c.alias + '</span></div>'
+      + '<div class="champ-course-row"><a href="' + c.url + '" target="_blank">' + c.campo + '</a> \u00b7 ' + c.lugar + '</div></div>'
       + '<div class="champ-score-col">\u2013 pts</div></div>';
   });
 }
@@ -585,8 +602,9 @@ async function renderEditions() {
       continue;
     }
     var urls = fotos.map(function(f){ return RAW + '/' + e.y + '/' + f; });
+    _galleries[e.y] = urls;
     gEl.innerHTML = fotos.map(function(f, idx) {
-      return '<div class="gallery-item" style="cursor:pointer" onclick="_gallery=' + JSON.stringify(urls) + ';openPhoto(' + idx + ')">'
+      return '<div class="gallery-item" style="cursor:pointer" onclick="openGallery(' + e.y + ',' + idx + ')">'
         + '<img src="' + RAW + '/' + e.y + '/' + f + '" style="width:100%;height:100%;object-fit:cover" onerror="this.closest(\'.gallery-item\').style.display=\'none\'">'
         + '</div>';
     }).join('');
