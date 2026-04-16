@@ -187,11 +187,11 @@ a{color:inherit;text-decoration:none}
 <section id="home" class="active">
   <div class="hero">
     <div class="hero-bg"></div>
-    <img src="assets/trofeo/trofeo_estudio.jpg" class="hero-trophy-bg" alt=""
+    <img src="trofeo/trofeo_estudio.jpg" class="hero-trophy-bg" alt=""
          onerror="this.style.display='none'">
     <div class="hero-content">
       <div class="hero-badge">Est. 2018 · Cádiz 2026</div>
-      <img src="assets/trofeo/trofeo_recorte.png" class="hero-trophy-front" alt="La Jarra de Clarete"
+      <img src="trofeo/trofeo_estudio.jpg" class="hero-trophy-front" alt="La Jarra de Clarete"
            onerror="this.style.display='none'">
       <h1>La Jarra de<br><em>Clarete</em> Trophy</h1>
       <p class="hero-sub">Golf's Greatest Rivalry · Among Friends</p>
@@ -231,7 +231,7 @@ a{color:inherit;text-decoration:none}
               <img src="https://dehesamontenmedio.com/wp-content/uploads/2019/12/Mesa-de-trabajo-5-.png" alt="Montenmedio" onerror="this.parentElement.innerHTML='⛳'">
             </div>
             <span class="route-date">14 Mayo</span>
-            <div class="route-name"><a href="https://dehesamontenmedio.com/golf/" target="_blank">Dehesa Montenmedio</a></div>
+            <div class="route-name"><a href="https://dehesamontenmedio.com/golf-2/" target="_blank">Dehesa Montenmedio</a></div>
             <div class="route-city">Vejer de la Frontera</div>
           </div>
           <div class="route-stop">
@@ -302,7 +302,7 @@ a{color:inherit;text-decoration:none}
       <table class="lb-table">
         <thead>
           <tr>
-            <th>Pos</th><th>Jugador</th>
+            <th>Pos</th><th style="width:36px"></th><th>Jugador</th>
             <th style="text-align:center">Hcp</th>
             <th style="text-align:center">R1</th><th style="text-align:center">R2</th>
             <th style="text-align:center">R3</th><th style="text-align:center">R4</th>
@@ -341,7 +341,7 @@ a{color:inherit;text-decoration:none}
       <p>Los que alzaron La Jarra de Clarete</p>
     </div>
     <div class="champs-wrapper">
-      <img src="assets/trofeo/trofeo_estudio.jpg" class="champs-trophy-bg" alt="" onerror="this.style.display='none'">
+      <img src="trofeo/trofeo_recorte.png" class="champs-trophy-bg" alt="" onerror="this.style.display='none'">
       <div class="champions-list" id="champions-list"><div class="loading">Cargando...</div></div>
     </div>
   </div>
@@ -444,7 +444,7 @@ async function loadPlayers(){
   }
   activos.forEach(p=>{
     const initials = p.nombre.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
-    const imgSrc = `${RAW}/jugadores/${p.id}/profile.png`;
+    const imgSrc = `${RAW}/jugadores/${p.id}/Profile.png`;
     const champTags = (p.campeon||[]).map(c=>`
       <a href="${c.url}" target="_blank" class="champ-tag">
         <img src="${OPEN_ICON}" alt="" onerror="this.style.display='none'">
@@ -491,6 +491,13 @@ async function loadLeaderboard(players){
   renderLb('general');
 }
 
+function playerAvatar(p){
+  const initials=p.nombre.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
+  return `<div style="width:32px;height:32px;border-radius:50%;border:1px solid var(--gold);overflow:hidden;flex-shrink:0;background:var(--navy2);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:.75rem;color:var(--gold)">
+    <img src="${RAW}/jugadores/${p.id}/Profile.png" alt="" style="width:100%;height:100%;object-fit:cover" onerror="this.parentElement.textContent='${initials}'">
+  </div>`;
+}
+
 function renderLb(roundIdx){
   const lb=document.getElementById('lb-body');
   const sorted = roundIdx==='general'
@@ -501,22 +508,25 @@ function renderLb(roundIdx){
     const posClass=i===0?'pos-1':i===1?'pos-2':i===2?'pos-3':'';
     const r=p.r||[null,null,null,null];
     const total=totalPts(p);
+    const avatarCell=`<td style="padding:.5rem .4rem .5rem .8rem;width:36px">${playerAvatar(p)}</td>`;
     if(roundIdx!=='general'){
       const v=r[roundIdx];
       return `<tr>
         <td><span class="pos-badge ${posClass}">${i+1}</span></td>
+        ${avatarCell}
         <td><span class="player-name">${p.nombre}</span><span class="aka">${p.alias}</span></td>
         <td style="text-align:center;color:var(--muted);font-size:.8rem">${p.handicap}</td>
-        <td style="text-align:center">${v!==null?`<b style="color:var(--cream)">${v}</b>`:'<span class="no-score">–</span>'}</td>
-        <td style="text-align:center"><span class="total-pts">${v||'–'}</span></td>
+        <td style="text-align:center">${v!==null?`<b style="color:var(--cream)">${v}</b>`:'<span style="color:var(--muted)">0</span>'}</td>
+        <td style="text-align:center"><span class="total-pts">${v||0}</span></td>
       </tr>`;
     }
     return `<tr>
       <td><span class="pos-badge ${posClass}">${i+1}</span></td>
+      ${avatarCell}
       <td><span class="player-name">${p.nombre}</span><span class="aka">${p.alias}</span></td>
       <td style="text-align:center;color:var(--muted);font-size:.8rem">${p.handicap}</td>
-      ${r.map(v=>`<td style="text-align:center">${v!==null?v:'<span class="no-score">–</span>'}</td>`).join('')}
-      <td style="text-align:center"><span class="total-pts">${total||'–'}</span></td>
+      ${r.map(v=>`<td style="text-align:center;color:${v?'var(--cream)':'var(--muted)'}">${v!==null?v:0}</td>`).join('')}
+      <td style="text-align:center"><span class="total-pts">${total||0}</span></td>
     </tr>`;
   }).join('');
 }
@@ -584,16 +594,65 @@ async function loadTeeTimes(){
 }
 
 // ─── EDITIONS ─────────────────────────────────────────────
-function renderEditions(){
+async function renderEditions(){
   const el=document.getElementById('editions-list');
-  EDICIONES.forEach(e=>{
+  for(const e of EDICIONES){
     el.innerHTML+=`<div class="gallery-section">
       <h3>Edición ${e.y} · ${e.l}</h3>
       <div class="gallery-grid" id="gallery-${e.y}">
-        <div class="gallery-item"><span style="opacity:.3;font-size:1.5rem">📷</span><span>Fotos en OneDrive/${e.y}/</span></div>
+        <div class="loading">Cargando fotos...</div>
       </div>
     </div>`;
-  });
+    const fotos = await fetchJSON(`${e.y}/fotos.json`);
+    const grid = document.getElementById(`gallery-${e.y}`);
+    if(!fotos||!fotos.length){
+      grid.innerHTML=`<div class="gallery-item"><span style="opacity:.3;font-size:1.5rem">📷</span><span>Sin fotos aún</span></div>`;
+      continue;
+    }
+    const urls=fotos.map(f=>`${RAW}/${e.y}/${f}`);
+    grid.innerHTML=fotos.map((f,i)=>`
+      <div class="gallery-item" style="cursor:pointer" onclick="openPhoto(${JSON.stringify(urls)},${i})">
+        <img src="${RAW}/${e.y}/${f}" alt="${f}"
+             style="width:100%;height:100%;object-fit:cover"
+             onerror="this.closest('.gallery-item').style.display='none'">
+      </div>`).join('');
+  }
+}
+
+let _gallery=[];let _galleryIdx=0;
+function openPhoto(urls,idx){
+  _gallery=urls;_galleryIdx=idx;
+  renderLightbox();
+}
+function renderLightbox(){
+  document.getElementById('lightbox')?.remove();
+  const url=_gallery[_galleryIdx];
+  const total=_gallery.length;
+  const ov=document.createElement('div');
+  ov.id='lightbox';
+  ov.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.93);z-index:999;display:flex;align-items:center;justify-content:center';
+  ov.innerHTML=`
+    <div style="position:relative;display:flex;align-items:center;gap:1rem;max-width:95vw">
+      <button onclick="moveGallery(-1)" style="background:none;border:1px solid rgba(201,168,76,.4);color:#c9a84c;font-size:1.5rem;width:44px;height:44px;border-radius:50%;cursor:pointer;flex-shrink:0" ${_galleryIdx===0?'disabled style="opacity:.3;cursor:default"':''}>‹</button>
+      <div style="text-align:center">
+        <img src="${url}" style="max-width:80vw;max-height:80vh;object-fit:contain;border:1px solid rgba(201,168,76,.2);display:block">
+        <div style="color:rgba(201,168,76,.6);font-size:.75rem;margin-top:.5rem;letter-spacing:.1em">${_galleryIdx+1} / ${total}</div>
+      </div>
+      <button onclick="moveGallery(1)" style="background:none;border:1px solid rgba(201,168,76,.4);color:#c9a84c;font-size:1.5rem;width:44px;height:44px;border-radius:50%;cursor:pointer;flex-shrink:0" ${_galleryIdx===total-1?'disabled style="opacity:.3;cursor:default"':''}>›</button>
+    </div>
+    <button onclick="document.getElementById('lightbox').remove()" style="position:absolute;top:1rem;right:1rem;background:none;border:none;color:rgba(201,168,76,.7);font-size:1.5rem;cursor:pointer">✕</button>`;
+  document.body.appendChild(ov);
+  ov.addEventListener('click',e=>{if(e.target===ov)ov.remove();});
+  document.onkeydown=e=>{
+    if(!document.getElementById('lightbox'))return;
+    if(e.key==='ArrowRight')moveGallery(1);
+    if(e.key==='ArrowLeft')moveGallery(-1);
+    if(e.key==='Escape')ov.remove();
+  };
+}
+function moveGallery(dir){
+  _galleryIdx=Math.max(0,Math.min(_gallery.length-1,_galleryIdx+dir));
+  renderLightbox();
 }
 
 // ─── MAP ──────────────────────────────────────────────────
@@ -662,7 +721,6 @@ tick();setInterval(tick,1000);
 // ─── INIT ─────────────────────────────────────────────────
 async function init(){
   renderEditions();
-  loadTeeTimes();
   loadCronicas();
   setTimeout(initMap,500);
   const players = await loadPlayers();
