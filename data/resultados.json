@@ -1,7 +1,7 @@
 
 [
-  { "id": "yago_mielgo",   "rondas": [0, 0, 0, 0] },
-  { "id": "juan_naya",     "rondas": [0, 0, 0, 0] },
+  { "id": "yago_mielgo",   "rondas": [80, 0, 0, 0] },
+  { "id": "juan_naya",     "rondas": [79, 0, 0, 0] },
   { "id": "luciano_diaz",  "rondas": [0, 0, 0, 0] },
   { "id": "xulio_beiras",  "rondas": [0, 0, 0, 0] },
   { "id": "santi_gonzalez","rondas": [0, 0, 0, 0] },

@@ -1,0 +1,18 @@
+[
+  {
+    "jornada": 0,
+    "fecha": "12 Mayo",
+    "campo": "Sotogrande",
+    "titulo": "Que afilen los cuchillos",
+    "texto": "Mañana arranca La Jarra de Clarete Trophy 2026. Cuatro campos, cuatro días, diez rivales y un único trofeo. El vigente campeón, Cañones, llega con la diana pintada en la espalda. El Doctor viene a operar. Lucius trae el pedigrí de St. Andrews. Y el resto... también tienen algo que decir. Que afilen los cuchillos, que mañana empieza la leyenda.",
+    "lider": null
+  },
+  {
+    "jornada": 1,
+    "fecha": "13 Mayo",
+    "campo": "La Hacienda Links",
+    "titulo": "El Doctor receta el primer golpe",
+    "texto": "La Hacienda Links se despertó con viento del Atlántico y diez tipos con ganas de sangre. Yago Mielgo, fiel a su apodo, operó con precisión quirúrgica desde el primer hoyo. Cañones salió a defender su corona pero el campo le puso a prueba. Al final del día el marcador habla claro: hay un nuevo líder provisional y la batalla acaba de empezar.",
+    "lider": "Yago Mielgo"
+  }
+]
