@@ -1,21 +1,21 @@
+
 {
   "jornada": 1,
   "grupos": [
     {
       "hora": "08:30",
       "hoyo": 1,
-      "jugadores": ["Yago Mielgo", "Juan Naya", "Luciano Díaz-Castroverde"]
+      "jugadores": ["Yago Mielgo", "Juan Naya", "Luciano Diaz-Castroverde"]
     },
     {
       "hora": "08:40",
       "hoyo": 1,
-      "jugadores": ["Xulio Beiras", "Santiago González", "José R. Cuervo"]
+      "jugadores": ["Xulio Beiras", "Santiago Gonzalez", "Jose R. Cuervo"]
     },
     {
       "hora": "08:50",
       "hoyo": 1,
-      "jugadores": ["Gabriel Miguel", "José González", "Javier García", "Pedro Martínez"]
+      "jugadores": ["Gabriel Miguel", "Jose Gonzalez", "Javier Garcia", "Pedro Martinez"]
     }
   ]
 }
-
