@@ -584,10 +584,10 @@ async function renderEditions() {
       gEl.innerHTML = '<div class="gallery-item"><span style="opacity:.3;font-size:1.5rem">&#128247;</span><span>Sin fotos a\u00FAn</span></div>';
       continue;
     }
-    var urls = fotos.map(function(f){ return BASE + '/' + e.y + '/' + f; });
+    var urls = fotos.map(function(f){ return RAW + '/' + e.y + '/' + f; });
     gEl.innerHTML = fotos.map(function(f, idx) {
       return '<div class="gallery-item" style="cursor:pointer" onclick="_gallery=' + JSON.stringify(urls) + ';openPhoto(' + idx + ')">'
-        + '<img src="' + BASE + '/' + e.y + '/' + f + '" style="width:100%;height:100%;object-fit:cover" onerror="this.closest(\'.gallery-item\').style.display=\'none\'">'
+        + '<img src="' + RAW + '/' + e.y + '/' + f + '" style="width:100%;height:100%;object-fit:cover" onerror="this.closest(\'.gallery-item\').style.display=\'none\'">'
         + '</div>';
     }).join('');
   }
