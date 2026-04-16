@@ -1,0 +1,23 @@
+
+// data/salidas01.json  ← La Hacienda Links · 13 Mayo
+{
+  "jornada": 1,
+  "grupos": [
+    {
+      "hora": "08:30",
+      "hoyo": 1,
+      "jugadores": ["Yago Mielgo", "Juan Naya", "Luciano Díaz-Castroverde"]
+    },
+    {
+      "hora": "08:40",
+      "hoyo": 1,
+      "jugadores": ["Xulio Beiras", "Santiago González", "José R. Cuervo"]
+    },
+    {
+      "hora": "08:50",
+      "hoyo": 1,
+      "jugadores": ["Gabriel Miguel", "José González", "Javier García", "Pedro Martínez"]
+    }
+  ]
+}
+
