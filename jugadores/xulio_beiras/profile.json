@@ -1,0 +1,13 @@
+{
+  "id": "xulio_beiras",
+  "nombre": "Xulio Beiras",
+  "alias": "Xuli",
+  "handicap": 8.3,
+  "licencia": "GC01063441",
+  "activo": true,
+  "bio": "Campeón en Kingsbarns 2023, uno de los links más bellos de Escocia. Xuli tiene clase natural y un juego corto que marca la diferencia.",
+  "campeon": [
+    { "año": 2023, "campo": "Kingsbarns Golf Links", "url": "https://www.kingsbarns.com/", "lugar": "Kingsbarns, Escocia" }
+  ],
+  "foto": "jugadores/xulio_beiras/profile.png"
+}

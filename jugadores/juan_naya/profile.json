@@ -1,0 +1,13 @@
+{
+  "id": "juan_naya",
+  "nombre": "Juan Naya",
+  "alias": "Cañones",
+  "handicap": 8.0,
+  "licencia": "GC01052017",
+  "activo": true,
+  "bio": "El vigente campeón llega a Cádiz con la diana en la espalda. Ganó en Sotogrande 2025 con una solidez que asustó a todos. Ahora hay que defender.",
+  "campeon": [
+    { "año": 2025, "campo": "Real Club de Golf Sotogrande", "url": "https://www.golfsotogrande.com/", "lugar": "Sotogrande, España" }
+  ],
+  "foto": "jugadores/juan_naya/profile.png"
+}

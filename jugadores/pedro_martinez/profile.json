@@ -1,0 +1,13 @@
+{
+  "id": "pedro_martinez",
+  "nombre": "Pedro Martínez",
+  "alias": "Simon",
+  "handicap": 17.8,
+  "licencia": "GC10774416",
+  "activo": true,
+  "bio": "Campeón en Pedreña 2024, cuna de Seve Ballesteros. Con ese bagaje histórico, Simon llega a Cádiz con hambre de repetir.",
+  "campeon": [
+    { "año": 2024, "campo": "Real Golf de Pedreña", "url": "https://realgolfpedreña.com/", "lugar": "Pedreña, España" }
+  ],
+  "foto": "jugadores/pedro_martinez/profile.png"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "yago_mielgo",
+  "nombre": "Yago Mielgo",
+  "alias": "Doctor",
+  "handicap": 4.8,
+  "licencia": "GC01056933",
+  "activo": true,
+  "bio": "El Doctor opera con la precisión de quien no puede permitirse fallar. Campeón en Carnoustie 2018, uno de los links más temidos del planeta. Su swing tiene quirófano.",
+  "campeon": [
+    { "año": 2018, "campo": "Carnoustie Golf Links", "url": "https://www.carnoustiegolflinks.com/", "lugar": "Carnoustie, Escocia" }
+  ],
+  "foto": "jugadores/yago_mielgo/profile.png"
+}

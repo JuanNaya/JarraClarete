@@ -1,0 +1,13 @@
+{
+  "id": "luciano_diaz",
+  "nombre": "Luciano Díaz-Castroverde",
+  "alias": "Lucius",
+  "handicap": 8.1,
+  "licencia": "GC01057572",
+  "activo": true,
+  "bio": "Ha ganado en el Old Course de St. Andrews. Eso lo dice todo. Lucius lleva el pedigrí más grande del torneo con la elegancia que le caracteriza.",
+  "campeon": [
+    { "año": 2019, "campo": "The Old Course, St. Andrews", "url": "https://www.standrews.com/play/courses/the-old-course", "lugar": "St. Andrews, Escocia" }
+  ],
+  "foto": "jugadores/luciano_diaz/profile.png"
+}

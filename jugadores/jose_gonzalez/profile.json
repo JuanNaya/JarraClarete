@@ -1,0 +1,11 @@
+{
+  "id": "jose_gonzalez",
+  "nombre": "José González",
+  "alias": "Frei",
+  "handicap": 12.2,
+  "licencia": "GC01315536",
+  "activo": true,
+  "bio": "El monje del green. Silencioso, constante, y capaz de birdiear el hoyo más imposible cuando nadie le mira. Un peligro silencioso.",
+  "campeon": [],
+  "foto": "jugadores/jose_gonzalez/profile.png"
+}
