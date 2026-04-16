@@ -610,10 +610,10 @@ async function renderEditions(){
       grid.innerHTML=`<div class="gallery-item"><span style="opacity:.3;font-size:1.5rem">📷</span><span>Sin fotos aún</span></div>`;
       continue;
     }
-    const urls=fotos.map(f=>`${BASE}/${e.y}/${f}`);
+    const urls=fotos.map(f=>`${RAW}/${e.y}/${f}`);
     grid.innerHTML=fotos.map((f,i)=>`
       <div class="gallery-item" style="cursor:pointer" onclick="openPhoto(${JSON.stringify(urls)},${i})">
-        <img src="${BASE}/${e.y}/${f}" alt="${f}"
+        <img src="${RAW}/${e.y}/${f}" alt="${f}"
              style="width:100%;height:100%;object-fit:cover"
              onerror="this.closest('.gallery-item').style.display='none'">
       </div>`).join('');
@@ -634,12 +634,12 @@ function renderLightbox(){
   ov.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.93);z-index:999;display:flex;align-items:center;justify-content:center';
   ov.innerHTML=`
     <div style="position:relative;display:flex;align-items:center;gap:1rem;max-width:95vw">
-      <button onclick="moveGallery(-1)" style="background:none;border:1px solid rgba(201,168,76,.4);color:#c9a84c;font-size:1.5rem;width:44px;height:44px;border-radius:50%;cursor:pointer;flex-shrink:0${_galleryIdx===0?';opacity:.3':'}">‹</button>
+      <button onclick="moveGallery(-1)" style="background:none;border:1px solid rgba(201,168,76,.4);color:#c9a84c;font-size:1.5rem;width:44px;height:44px;border-radius:50%;cursor:pointer;flex-shrink:0" ${_galleryIdx===0?'disabled style="opacity:.3;cursor:default"':''}>‹</button>
       <div style="text-align:center">
-        <img src="${_gallery[_galleryIdx]}" style="max-width:80vw;max-height:80vh;object-fit:contain;border:1px solid rgba(201,168,76,.2);display:block">
-        <div style="color:rgba(201,168,76,.6);font-size:.75rem;margin-top:.5rem;letter-spacing:.1em">${_galleryIdx+1} / ${_gallery.length}</div>
+        <img src="${url}" style="max-width:80vw;max-height:80vh;object-fit:contain;border:1px solid rgba(201,168,76,.2);display:block">
+        <div style="color:rgba(201,168,76,.6);font-size:.75rem;margin-top:.5rem;letter-spacing:.1em">${_galleryIdx+1} / ${total}</div>
       </div>
-      <button onclick="moveGallery(1)" style="background:none;border:1px solid rgba(201,168,76,.4);color:#c9a84c;font-size:1.5rem;width:44px;height:44px;border-radius:50%;cursor:pointer;flex-shrink:0${_galleryIdx===_gallery.length-1?';opacity:.3':'}">›</button>
+      <button onclick="moveGallery(1)" style="background:none;border:1px solid rgba(201,168,76,.4);color:#c9a84c;font-size:1.5rem;width:44px;height:44px;border-radius:50%;cursor:pointer;flex-shrink:0" ${_galleryIdx===total-1?'disabled style="opacity:.3;cursor:default"':''}>›</button>
     </div>
     <button onclick="document.getElementById('lightbox').remove()" style="position:absolute;top:1rem;right:1rem;background:none;border:none;color:rgba(201,168,76,.7);font-size:1.5rem;cursor:pointer">✕</button>`;
   document.body.appendChild(ov);
@@ -722,7 +722,6 @@ tick();setInterval(tick,1000);
 // ─── INIT ─────────────────────────────────────────────────
 async function init(){
   renderEditions();
-  loadTeeTimes();
   loadCronicas();
   setTimeout(initMap,500);
   const players = await loadPlayers();
