@@ -188,7 +188,7 @@ a{color:inherit;text-decoration:none}
           <div class="route-stop">
             <div class="route-logo-wrap"><img src="https://dehesamontenmedio.com/wp-content/uploads/2019/12/Mesa-de-trabajo-5-.png" alt="Montenmedio" onerror="this.parentElement.innerHTML='&#9971;'"></div>
             <span class="route-date">14 Mayo</span>
-            <div class="route-name"><a href="https://dehesamontenmedio.com/golf-2/" target="_blank">Dehesa Montenmedio</a></div>
+            <div class="route-name"><a href="https://dehesamontenmedio.com/golf-montenmedio/" target="_blank">Dehesa Montenmedio</a></div>
             <div class="route-city">Vejer de la Frontera</div>
           </div>
           <div class="route-stop">
@@ -319,7 +319,7 @@ var AUSENTES_IDS  = ['fernando_ortiz','juantxo_mielgo','manuel_gonzalez'];
 var NOVATOS_IDS   = ['manuel_orio'];
 var TEE_META = [
   {date:'13 Mayo - Miercoles', course:'La Hacienda Links',       url:'https://lahaciendagolf.com/links-course/'},
-  {date:'14 Mayo - Jueves',    course:'Dehesa Montenmedio',      url:'https://dehesamontenmedio.com/golf-2/'},
+  {date:'14 Mayo - Jueves',    course:'Dehesa Montenmedio',      url:'https://dehesamontenmedio.com/golf-montenmedio/'},
   {date:'15 Mayo - Viernes',   course:'La Canada Golf Club',     url:'https://lacanadagolf.com/'},
   {date:'16 Mayo - Sabado - FINAL', course:'La Hacienda Heathlands', url:'https://lahaciendagolf.com/heathland-course/'}
 ];
@@ -398,9 +398,15 @@ function showRound(idx, btn) {
   renderLb(idx);
 }
 
+function registerPhoto(year, url) {
+  if (!_galleries[year]) _galleries[year] = [];
+  if (_galleries[year].indexOf(url) === -1) _galleries[year].push(url);
+}
+
 function openGallery(year, idx) {
-  _gallery = _galleries[year] || [];
-  _galleryIdx = idx;
+  var loaded = _galleries[year] || [];
+  _gallery = loaded;
+  _galleryIdx = Math.min(idx, Math.max(0, loaded.length-1));
   renderLightbox();
 }
 
@@ -446,7 +452,7 @@ function initMap() {
   var iO = L.divIcon({className:'', html:'<div style="width:12px;height:12px;background:#c9a84c;border-radius:50%;border:2px solid #e8c878"></div>', iconSize:[12,12], iconAnchor:[6,6]});
   var campos = [
     {n:'La Hacienda Links R1', lat:36.374, lng:-6.101, url:'https://lahaciendagolf.com/links-course/'},
-    {n:'Dehesa Montenmedio R2', lat:36.268, lng:-5.941, url:'https://dehesamontenmedio.com/golf-2/'},
+    {n:'Dehesa Montenmedio R2', lat:36.268, lng:-5.941, url:'https://dehesamontenmedio.com/golf-montenmedio/'},
     {n:'La Canada R3', lat:36.323, lng:-5.401, url:'https://lacanadagolf.com/'},
     {n:'La Hacienda Heathlands R4 FINAL', lat:36.380, lng:-6.105, url:'https://lahaciendagolf.com/heathland-course/'}
   ];
@@ -637,18 +643,19 @@ function renderEditions() {
             gEl.innerHTML = '<div class="gallery-item"><span style="opacity:.3;font-size:1.5rem">&#128247;</span><span>Sin fotos aun</span></div>';
             return;
           }
-          var urls = fotos.map(function(f){ return RAW+'/'+anyo+'/'+f; });
-          _galleries[anyo] = urls;
+          _galleries[anyo] = [];
           gEl.innerHTML = fotos.map(function(f,idx) {
             return '<div class="gallery-item" style="cursor:pointer" onclick="openGallery('+anyo+','+idx+')">'
-              + '<img src="'+RAW+'/'+anyo+'/'+f+'" style="width:100%;height:100%;object-fit:cover" onerror="this.closest(\'.gallery-item\').style.display=\'none\'">'
+              + '<img src="'+RAW+'/'+anyo+'/'+f+'" style="width:100%;height:100%;object-fit:cover"'
+              + ' onload="registerPhoto('+anyo+',\''+RAW+'/'+anyo+'/'+f+'\')"'
+              + ' onerror="this.closest(\'.gallery-item\').style.display=\'none\'">'
               + '</div>';
           }).join('');
         });
       });
     });
     return chain;
-  }); 
+  });
 }
 
 function init() {
