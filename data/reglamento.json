@@ -1,0 +1,47 @@
+[
+  {
+    "num": 1,
+    "titulo": "Formato de juego",
+    "texto": "Stableford con Handicap completo segun WHS. Se juegan 4 rondas en campos diferentes durante los dias 13, 14, 15 y 16 de mayo de 2026."
+  },
+  {
+    "num": 2,
+    "titulo": "Handicap",
+    "texto": "Se utilizara el handicap oficial de la RFEG en la fecha de inicio. Los puntos Stableford se calcularan con el handicap de campo de cada recorrido."
+  },
+  {
+    "num": 3,
+    "titulo": "Clasificacion general",
+    "texto": "Suma de puntos Stableford de las 4 rondas. En empate: countback de ultima ronda, luego ultimos 9, 6, 3 y 1 hoyo."
+  },
+  {
+    "num": 4,
+    "titulo": "Reglas de golf",
+    "texto": "Reglas de Golf de la R&A vigentes. En caso de duda se jugara una segunda bola y se consultara al comite al terminar el hoyo."
+  },
+  {
+    "num": 5,
+    "titulo": "Salidas",
+    "texto": "El orden se publicara la tarde anterior. Retraso de mas de 5 minutos sobre la hora asignada implica perdida del primer hoyo."
+  },
+  {
+    "num": 6,
+    "titulo": "Tarjetas",
+    "texto": "Cada jugador firma su tarjeta al finalizar. Tarjeta firmada con puntuacion inferior a la real: descalificacion."
+  },
+  {
+    "num": 7,
+    "titulo": "Velocidad de juego",
+    "texto": "Se requiere mantener el ritmo del campo. Mas de un hoyo de diferencia con el grupo de delante podra implicar aviso del arbitro."
+  },
+  {
+    "num": 8,
+    "titulo": "El Trofeo",
+    "texto": "El ganador recibe La Jarra de Clarete Trophy. Su nombre se graba en la base. El campeon elige el primer campo de la siguiente edicion."
+  },
+  {
+    "num": 9,
+    "titulo": "Espiritu del torneo",
+    "texto": "Ante todo, celebracion de la amistad y el golf. Fair play, respeto y la disposicion a disfrutar independientemente del marcador."
+  }
+]

@@ -1,0 +1,56 @@
+[
+  {
+    "año": 2018,
+    "lugar": "Carnoustie, Escocia",
+    "fechas": "Junio 2018",
+    "campos": ["Carnoustie Golf Links"],
+    "campeon": "Yago Mielgo",
+    "participantes": ["yago_mielgo", "juan_naya", "luciano_diaz", "xulio_beiras", "pedro_martinez"],
+    "descripcion": "La primera edicion. Carnoustie recibio al grupo con viento y lluvia escocesa. Yago Mielgo se impuso con autoridad en lo que seria el inicio de una leyenda."
+  },
+  {
+    "año": 2019,
+    "lugar": "St. Andrews, Escocia",
+    "fechas": "Junio 2019",
+    "campos": ["The Old Course, St. Andrews"],
+    "campeon": "Luciano Diaz-Castroverde",
+    "participantes": ["yago_mielgo", "juan_naya", "luciano_diaz", "xulio_beiras", "pedro_martinez"],
+    "descripcion": "El Old Course de St. Andrews fue el escenario de la segunda edicion. Lucius domino de principio a fin en la cuna del golf."
+  },
+  {
+    "año": 2023,
+    "lugar": "Kingsbarns, Escocia",
+    "fechas": "Mayo 2023",
+    "campos": ["Kingsbarns Golf Links"],
+    "campeon": "Xulio Beiras",
+    "participantes": ["yago_mielgo", "juan_naya", "luciano_diaz", "xulio_beiras", "pedro_martinez", "jose_cuervo"],
+    "descripcion": "Vuelta a Escocia con Kingsbarns como protagonista. Xuli firmo una semana perfecta para alzar La Jarra por primera vez."
+  },
+  {
+    "año": 2024,
+    "lugar": "Pedreña, España",
+    "fechas": "Mayo 2024",
+    "campos": ["Real Golf de Pedreña"],
+    "campeon": "Pedro Martinez",
+    "participantes": ["yago_mielgo", "juan_naya", "luciano_diaz", "xulio_beiras", "pedro_martinez", "jose_cuervo", "santi_gonzalez"],
+    "descripcion": "Primera edicion en suelo español, en la cuna de Seve Ballesteros. Simon se inspiro en el maestro para llevarse el titulo."
+  },
+  {
+    "año": 2025,
+    "lugar": "Sotogrande, España",
+    "fechas": "Mayo 2025",
+    "campos": ["Real Club de Golf Sotogrande"],
+    "campeon": "Juan Naya",
+    "participantes": ["yago_mielgo", "juan_naya", "luciano_diaz", "xulio_beiras", "pedro_martinez", "jose_cuervo", "santi_gonzalez", "gabriel_miguel"],
+    "descripcion": "Canones se impuso en Sotogrande con una solidez que dejo sin argumentos al resto. El vigente campeon llega a Cadiz con la diana en la espalda."
+  },
+  {
+    "año": 2026,
+    "lugar": "Cadiz, España",
+    "fechas": "13-16 Mayo 2026",
+    "campos": ["La Hacienda Links", "Dehesa Montenmedio", "La Canada Golf Club", "La Hacienda Heathlands"],
+    "campeon": null,
+    "participantes": ["yago_mielgo", "juan_naya", "luciano_diaz", "xulio_beiras", "pedro_martinez", "jose_cuervo", "santi_gonzalez", "gabriel_miguel", "javier_garcia", "jose_gonzalez"],
+    "descripcion": "La edicion de Cadiz. Cuatro campos, cuatro dias, diez rivales y un unico trofeo. Que gane el mejor."
+  }
+]

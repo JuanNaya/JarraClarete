@@ -302,17 +302,7 @@ a{color:inherit;text-decoration:none}
 <section id="rules">
   <div class="page-content">
     <div class="page-header"><h2>Reglamento</h2><p>La Jarra de Clarete Trophy &middot; C&aacute;diz 2026</p></div>
-    <div class="rules-grid">
-      <div class="rule-item"><div class="rule-num">1</div><div><div class="rule-title">Formato de juego</div><div class="rule-text">Stableford con Handicap completo seg&uacute;n WHS. Se juegan 4 rondas en campos diferentes durante los d&iacute;as 13, 14, 15 y 16 de mayo de 2026.</div></div></div>
-      <div class="rule-item"><div class="rule-num">2</div><div><div class="rule-title">Handicap</div><div class="rule-text">Se utilizar&aacute; el handicap oficial de la RFEG en la fecha de inicio. Los puntos Stableford se calcular&aacute;n con el handicap de campo de cada recorrido.</div></div></div>
-      <div class="rule-item"><div class="rule-num">3</div><div><div class="rule-title">Clasificaci&oacute;n general</div><div class="rule-text">Suma de puntos Stableford de las 4 rondas. En empate: countback de &uacute;ltima ronda, luego &uacute;ltimos 9, 6, 3 y 1 hoyo.</div></div></div>
-      <div class="rule-item"><div class="rule-num">4</div><div><div class="rule-title">Reglas de golf</div><div class="rule-text">Reglas de Golf de la R&amp;A vigentes. En caso de duda se jugar&aacute; una segunda bola y se consultar&aacute; al comit&eacute; al terminar el hoyo.</div></div></div>
-      <div class="rule-item"><div class="rule-num">5</div><div><div class="rule-title">Salidas</div><div class="rule-text">El orden se publicar&aacute; la tarde anterior. Retraso de m&aacute;s de 5 minutos implica p&eacute;rdida del primer hoyo.</div></div></div>
-      <div class="rule-item"><div class="rule-num">6</div><div><div class="rule-title">Tarjetas</div><div class="rule-text">Cada jugador firma su tarjeta al finalizar. Tarjeta firmada con puntuaci&oacute;n inferior a la real: descalificaci&oacute;n.</div></div></div>
-      <div class="rule-item"><div class="rule-num">7</div><div><div class="rule-title">Velocidad de juego</div><div class="rule-text">Se requiere mantener el ritmo del campo. M&aacute;s de un hoyo de diferencia con el grupo de delante podr&aacute; implicar aviso del &aacute;rbitro.</div></div></div>
-      <div class="rule-item"><div class="rule-num">8</div><div><div class="rule-title">El Trofeo</div><div class="rule-text">El ganador recibe La Jarra de Clarete Trophy. Su nombre se graba en la base. El campe&oacute;n elige el primer campo de la siguiente edici&oacute;n.</div></div></div>
-      <div class="rule-item"><div class="rule-num">9</div><div><div class="rule-title">Esp&iacute;ritu del torneo</div><div class="rule-text">Ante todo, celebraci&oacute;n de la amistad y el golf. Fair play, respeto y la disposici&oacute;n a disfrutar independientemente del marcador.</div></div></div>
-    </div>
+    <div class="rules-grid" id="rules-grid"><div class="loading">Cargando reglamento...</div></div>
   </div>
 </section>
 
@@ -343,7 +333,7 @@ var OPEN_ICON = 'https://www.theopen.com/-/media/images/logo-the-open-symbol.png
 var JUGADORES_IDS = ['yago_mielgo','juan_naya','luciano_diaz','xulio_beiras','santi_gonzalez','jose_cuervo','jose_gonzalez','gabriel_miguel','javier_garcia','pedro_martinez'];
 var AUSENTES_IDS  = ['fernando_ortiz','juantxo_mielgo','manuel_gonzalez'];
 var NOVATOS_IDS   = ['manuel_orio'];
-var EDICIONES     = [{y:2025,l:'Sotogrande, Espa\u00f1a'},{y:2024,l:'Pedre\u00f1a, Espa\u00f1a'},{y:2023,l:'Kingsbarns, Escocia'},{y:2019,l:'St. Andrews, Escocia'},{y:2018,l:'Carnoustie, Escocia'}];
+var EDICIONES     = [];
 var TEE_META      = [
   {date:'13 Mayo \u00b7 Mi\u00e9rcoles', course:'La Hacienda Links',      url:'https://lahaciendagolf.com/links-course/'},
   {date:'14 Mayo \u00b7 Jueves',         course:'Dehesa Montenmedio',     url:'https://dehesamontenmedio.com/golf-2/'},
@@ -501,6 +491,9 @@ async function loadPlayers() {
       var anyo = c['año'] || c.ano || c.year || '?';
       return '<a href="'+c.url+'" target="_blank" class="champ-tag"><img src="'+OPEN_ICON+'" onerror="this.style.display=\'none\'"> '+anyo+' \u00b7 '+c.lugar+'</a>';
     }).join('');
+    var ediciones = EDICIONES.filter(function(e){ return (e.participantes||[]).indexOf(p.id) !== -1; })
+      .map(function(e){ return e['año']; }).sort().join(' &middot; ');
+    var edTag = ediciones ? '<div style="margin-top:.6rem;font-size:.68rem;color:var(--muted);letter-spacing:.05em">Ediciones: <span style="color:var(--gold2)">' + ediciones + '</span></div>' : '';
     grid.innerHTML += '<div class="player-card">'
       + '<div style="display:flex;align-items:center;gap:.8rem;margin-bottom:.7rem">'
       + '<div class="player-avatar"><img src="'+BASE+'/jugadores/'+p.id+'/Profile.png" alt="'+p.nombre+'" onerror="this.parentElement.textContent=\''+ini+'\'"></div>'
@@ -510,7 +503,7 @@ async function loadPlayers() {
       + '<div class="player-hcp">Hcp '+p.handicap+' &middot; <span style="font-family:monospace;font-size:.62rem;opacity:.6">'+p.licencia+'</span></div>'
       + '</div></div>'
       + '<p class="player-bio">'+p.bio+'</p>'
-      + tags + '</div>';
+      + edTag + tags + '</div>';
   });
   absAll.filter(Boolean).forEach(function(p) {
     absentGrid.innerHTML += '<div class="absent-card"><h3>'+p.nombre+'</h3><div class="absent-aka">aka '+p.alias+'</div><p>'+p.bio+'</p></div>';
@@ -569,7 +562,16 @@ async function loadCronicas() {
   }).join('');
 }
 
-async function loadTeeTimes() {
+async function loadReglamento() {
+  var data = await fetchJSON('data/reglamento.json');
+  if (!data) return;
+  var rg = document.getElementById('rules-grid');
+  rg.innerHTML = data.map(function(r) {
+    return '<div class="rule-item"><div class="rule-num">' + r.num + '</div>'
+      + '<div><div class="rule-title">' + r.titulo + '</div>'
+      + '<div class="rule-text">' + r.texto + '</div></div></div>';
+  }).join('');
+}
   try {
     var td = document.getElementById('tee-days');
     td.innerHTML = '';
@@ -599,24 +601,53 @@ async function loadTeeTimes() {
 }
 
 async function renderEditions() {
+  var edData = await fetchJSON('data/ediciones.json');
+  if (!edData) return;
+  EDICIONES = edData;
   var el = document.getElementById('editions-list');
-  for (var i = 0; i < EDICIONES.length; i++) {
-    var e = EDICIONES[i];
-    el.innerHTML += '<div class="gallery-section"><h3>Edici\u00f3n ' + e.y + ' \u00b7 ' + e.l + '</h3>'
-      + '<div class="gallery-grid" id="gallery-' + e.y + '"><div class="loading">Cargando fotos...</div></div></div>';
-    var fotos = await fetchJSON(e.y + '/fotos.json');
-    var gEl   = document.getElementById('gallery-' + e.y);
-    if (!fotos || !fotos.length) {
-      gEl.innerHTML = '<div class="gallery-item"><span style="opacity:.3;font-size:1.5rem">&#128247;</span><span>Sin fotos a\u00FAn</span></div>';
-      continue;
+  var sorted = edData.slice().sort(function(a,b){ return a['año']-b['año']; });
+  for (var i = 0; i < sorted.length; i++) {
+    var e = sorted[i];
+    var anyo = e['año'];
+    var esCurrent = anyo === 2026;
+    var camposList = (e.campos||[]).join(' &middot; ');
+    var header = '<div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1rem">'
+      + '<div>'
+      + '<h3 style="font-family:var(--serif);color:var(--gold);font-size:1.2rem;margin-bottom:.2rem">Edici\u00f3n ' + anyo + ' &middot; ' + e.lugar + '</h3>'
+      + '<div style="font-size:.75rem;color:var(--muted);margin-bottom:.4rem">' + e.fechas + '</div>'
+      + '<div style="font-size:.78rem;color:var(--cream2);opacity:.8">' + camposList + '</div>'
+      + '</div>'
+      + (e.campeon
+          ? '<div style="text-align:right;flex-shrink:0"><div style="font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:.2rem">Campe\u00f3n</div>'
+            + '<div style="font-family:var(--serif);color:var(--gold);font-size:1rem">' + e.campeon + '</div></div>'
+          : '<div style="text-align:right;flex-shrink:0"><div style="font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:.2rem">Campe\u00f3n</div>'
+            + '<div style="font-family:var(--serif);color:var(--gold2);font-size:.9rem;font-style:italic">Por decidir</div></div>')
+      + '</div>';
+    var desc = e.descripcion
+      ? '<p style="font-size:.82rem;color:var(--cream2);opacity:.75;line-height:1.6;margin-bottom:1rem">' + e.descripcion + '</p>'
+      : '';
+    el.innerHTML += '<div class="gallery-section">'
+      + header + desc
+      + '<div class="gallery-grid" id="gallery-' + anyo + '"><div class="loading">Cargando fotos...</div></div>'
+      + '</div>';
+
+    if (!esCurrent) {
+      var fotos = await fetchJSON(anyo + '/fotos.json');
+      var gEl = document.getElementById('gallery-' + anyo);
+      if (!fotos || !fotos.length) {
+        gEl.innerHTML = '<div class="gallery-item"><span style="opacity:.3;font-size:1.5rem">&#128247;</span><span>Sin fotos a\u00FAn</span></div>';
+        continue;
+      }
+      var urls = fotos.map(function(f){ return RAW + '/' + anyo + '/' + f; });
+      _galleries[anyo] = urls;
+      gEl.innerHTML = fotos.map(function(f, idx) {
+        return '<div class="gallery-item" style="cursor:pointer" onclick="openGallery(' + anyo + ',' + idx + ')">'
+          + '<img src="' + RAW + '/' + anyo + '/' + f + '" style="width:100%;height:100%;object-fit:cover" onerror="this.closest(\'.gallery-item\').style.display=\'none\'">'
+          + '</div>';
+      }).join('');
+    } else {
+      document.getElementById('gallery-' + anyo).innerHTML = '<div style="padding:1rem;font-size:.82rem;color:var(--muted);font-style:italic">Las fotos se ir\u00e1n subiendo durante el torneo.</div>';
     }
-    var urls = fotos.map(function(f){ return RAW + '/' + e.y + '/' + f; });
-    _galleries[e.y] = urls;
-    gEl.innerHTML = fotos.map(function(f, idx) {
-      return '<div class="gallery-item" style="cursor:pointer" onclick="openGallery(' + e.y + ',' + idx + ')">'
-        + '<img src="' + RAW + '/' + e.y + '/' + f + '" style="width:100%;height:100%;object-fit:cover" onerror="this.closest(\'.gallery-item\').style.display=\'none\'">'
-        + '</div>';
-    }).join('');
   }
 }
 
@@ -627,6 +658,7 @@ async function init() {
   renderEditions();
   loadTeeTimes();
   loadCronicas();
+  loadReglamento();
   var players = await loadPlayers();
   await loadChampions(players);
   await loadLeaderboard(players);
