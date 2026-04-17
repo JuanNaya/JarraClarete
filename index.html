@@ -12,7 +12,8 @@
 body{background:var(--navy);color:var(--cream);font-family:var(--sans);min-height:100vh;overflow-x:hidden}
 nav{background:rgba(10,22,40,0.97);border-bottom:1px solid var(--gold);position:sticky;top:0;z-index:200;padding:0 1rem}
 .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:52px;gap:.5rem}
-.nav-logo{font-family:var(--serif);font-size:.85rem;color:var(--gold);letter-spacing:.04em;white-space:nowrap;flex-shrink:0}
+.nav-logo{display:flex;align-items:center}
+.nav-logo img{height:36px;object-fit:contain}
 .nav-links{display:flex;flex-wrap:wrap}
 .nav-links button{background:none;border:none;color:var(--cream2);font-family:var(--sans);font-size:.68rem;letter-spacing:.07em;text-transform:uppercase;padding:.4rem .55rem;cursor:pointer;transition:color .2s;white-space:nowrap}
 .nav-links button:hover,.nav-links button.active{color:var(--gold)}
@@ -20,7 +21,7 @@ section{display:none;min-height:calc(100vh - 52px)}
 section.active{display:block}
 .hero{position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:3rem 2rem;min-height:calc(100vh - 52px)}
 .hero-bg{position:absolute;inset:0;background:linear-gradient(160deg,#0a1628 0%,#0f2040 55%,#150a00 100%);z-index:0}
-.hero-trophy-bg{position:absolute;right:3%;top:50%;transform:translateY(-50%);height:75%;max-height:520px;opacity:.1;z-index:1;pointer-events:none;filter:grayscale(.2)}
+.hero-trophy-bg{position:absolute;right:3%;top:50%;transform:translateY(-50%);height:75%;max-height:520px;opacity:.1;z-index:1;pointer-events:none}
 .hero-content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center}
 .hero-badge{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:.3rem 1.2rem;margin-bottom:1.5rem;display:inline-block}
 .hero-trophy-front{height:188px;margin-bottom:1.2rem;filter:drop-shadow(0 8px 32px rgba(201,168,76,.3));object-fit:contain}
@@ -48,7 +49,6 @@ section.active{display:block}
 .route-date{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold2);margin-bottom:.25rem;display:block}
 .route-name{font-size:.72rem;color:var(--cream);font-weight:600;line-height:1.3}
 .route-name a{color:var(--cream);text-decoration:underline;text-decoration-color:rgba(201,168,76,.3)}
-.route-name a:hover{color:var(--gold)}
 .route-city{font-size:.62rem;color:var(--cream2);opacity:.6;margin-top:.15rem}
 .map-section{background:var(--navy2);border:1px solid rgba(201,168,76,.2);border-radius:4px;overflow:hidden;margin-bottom:2rem}
 .map-section h3{font-family:var(--serif);color:var(--gold);font-size:1.1rem;padding:1rem 1.5rem .8rem;border-bottom:1px solid rgba(201,168,76,.15)}
@@ -86,7 +86,7 @@ section.active{display:block}
 .player-bio{font-size:.8rem;color:var(--cream2);opacity:.8;line-height:1.6;margin-top:.6rem}
 .champ-tag{display:inline-flex;align-items:center;gap:4px;margin-top:.5rem;font-size:.65rem;color:var(--gold);background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.2);padding:.2rem .5rem;border-radius:2px}
 .champ-tag img{width:14px;height:14px;object-fit:contain}
-.absent-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;margin-top:1.5rem}
+.absent-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;margin-top:1rem}
 .absent-card{background:rgba(255,255,255,.03);border:1px dashed rgba(201,168,76,.2);border-radius:4px;padding:1.1rem;opacity:.75}
 .absent-card h3{font-family:var(--serif);color:var(--cream2);font-size:.95rem;margin-bottom:.15rem}
 .absent-aka{font-size:.72rem;color:var(--gold);font-style:italic;margin-bottom:.3rem}
@@ -99,13 +99,11 @@ section.active{display:block}
 .champion-row:first-child{background:rgba(201,168,76,.05)}
 .champion-row:hover{background:rgba(201,168,76,.06)}
 .champ-year-col{font-family:var(--serif);font-size:1.4rem;color:var(--gold);min-width:58px}
-.champ-icon{width:24px;height:24px;object-fit:contain;flex-shrink:0}
 .champ-info{flex:1;min-width:0}
 .champ-name-row{font-size:.95rem;color:var(--cream);font-weight:600;margin-bottom:.12rem}
 .c-aka{font-size:.75rem;color:var(--gold);font-style:italic;opacity:.8;margin-left:.3rem}
 .champ-course-row{font-size:.75rem;color:var(--muted)}
 .champ-course-row a{color:var(--gold);text-decoration:underline;text-decoration-color:rgba(201,168,76,.3)}
-.champ-score-col{font-family:var(--serif);color:var(--gold2);font-size:1.1rem;white-space:nowrap}
 .rules-grid{display:grid;gap:1rem}
 .rule-item{background:var(--navy2);border-left:3px solid var(--gold);border-radius:0 4px 4px 0;padding:1rem 1.2rem;display:flex;gap:1rem}
 .rule-num{font-family:var(--serif);font-size:1.4rem;color:var(--gold);min-width:2rem;line-height:1}
@@ -121,15 +119,14 @@ section.active{display:block}
 .tee-table tr:hover td{background:rgba(201,168,76,.04)}
 .gallery-section{margin-bottom:2rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(201,168,76,.08)}
 .gallery-section:last-child{border-bottom:none}
-.gallery-section h3{font-family:var(--serif);color:var(--gold);margin-bottom:1rem;font-size:1.1rem}
-.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:.8rem}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:.8rem;margin-top:1rem}
 .gallery-item{background:var(--navy2);border:1px solid rgba(201,168,76,.12);border-radius:4px;aspect-ratio:4/3;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--muted);font-size:.75rem;gap:.4rem;overflow:hidden}
 .gallery-item img{width:100%;height:100%;object-fit:cover}
 .post-card{background:var(--navy2);border:1px solid rgba(201,168,76,.2);border-radius:4px;padding:1.3rem;margin-bottom:1.2rem}
 .post-round{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
 .post-card h3{font-family:var(--serif);color:var(--cream);font-size:1.1rem;margin-bottom:.6rem}
 .post-card p{font-size:.85rem;color:var(--cream2);opacity:.8;line-height:1.7}
-.loading{text-align:center;padding:3rem;color:var(--muted);font-size:.85rem;font-style:italic}
+.loading{text-align:center;padding:2rem;color:var(--muted);font-size:.85rem;font-style:italic}
 footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.12);text-align:center;padding:1.5rem;color:var(--muted);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase}
 a{color:inherit;text-decoration:none}
 </style>
@@ -138,7 +135,7 @@ a{color:inherit;text-decoration:none}
 
 <nav>
   <div class="nav-inner">
-    <div class="nav-logo"><img src="trofeo/Icon.png" alt="La Jarra de Clarete" style="height:36px;object-fit:contain;vertical-align:middle" onerror="this.style.display='none'"></div>
+    <div class="nav-logo"><img src="trofeo/Icon.png" alt="La Jarra de Clarete" onerror="this.style.display='none'"></div>
     <div class="nav-links">
       <button class="active" onclick="show('home',this)">Inicio</button>
       <button onclick="show('leaderboard',this)">Leaderboard</button>
@@ -195,7 +192,7 @@ a{color:inherit;text-decoration:none}
             <div class="route-city">Vejer de la Frontera</div>
           </div>
           <div class="route-stop">
-            <div class="route-logo-wrap"><img src="https://lacanadagolf.com/wp-content/uploads/2023/04/logocanadan.png" alt="La Ca&ntilde;ada" onerror="this.parentElement.innerHTML='&#9971;'"></div>
+            <div class="route-logo-wrap"><img src="https://lacanadagolf.com/wp-content/uploads/2023/04/logocanadan.png" alt="La Canada" onerror="this.parentElement.innerHTML='&#9971;'"></div>
             <span class="route-date">15 Mayo</span>
             <div class="route-name"><a href="https://lacanadagolf.com/" target="_blank">La Ca&ntilde;ada Golf Club</a></div>
             <div class="route-city">Castellar de la Frontera</div>
@@ -239,10 +236,7 @@ a{color:inherit;text-decoration:none}
 
 <section id="leaderboard">
   <div class="page-content">
-    <div class="page-header">
-      <h2>Leaderboard</h2>
-      <p>Clasificaci&oacute;n general &middot; Stableford Handicap</p>
-    </div>
+    <div class="page-header"><h2>Leaderboard</h2><p>Clasificaci&oacute;n general &middot; Stableford Handicap</p></div>
     <div class="round-tabs">
       <button class="round-tab active" onclick="showRound('general',this)">General</button>
       <button class="round-tab" onclick="showRound(0,this)">R1 &middot; La Hacienda Links</button>
@@ -261,26 +255,21 @@ a{color:inherit;text-decoration:none}
             <th style="text-align:center">Total</th>
           </tr>
         </thead>
-        <tbody id="lb-body"><tr><td colspan="9" class="loading">Cargando clasificaci&oacute;n...</td></tr></tbody>
+        <tbody id="lb-body"><tr><td colspan="9" class="loading">Cargando...</td></tr></tbody>
       </table>
     </div>
-    <p class="lb-note">Actualizado autom&aacute;ticamente &middot; Datos en data/resultados.json</p>
+    <p class="lb-note">Actualizado desde data/resultados.json</p>
   </div>
 </section>
 
 <section id="players">
   <div class="page-content">
-    <div class="page-header">
-      <h2>Los Contendientes</h2>
-      <p>Los diez valientes que se disputan La Jarra de Clarete 2026</p>
-    </div>
-    <div class="players-grid" id="players-grid">
-      <div class="loading" style="grid-column:1/-1">Cargando jugadores...</div>
-    </div>
+    <div class="page-header"><h2>Los Contendientes</h2><p>Los diez valientes que se disputan La Jarra de Clarete 2026</p></div>
+    <div class="players-grid" id="players-grid"><div class="loading" style="grid-column:1/-1">Cargando jugadores...</div></div>
     <div style="margin-top:2.5rem;padding-top:2rem;border-top:1px solid rgba(201,168,76,.12)">
       <h3 style="font-family:var(--serif);color:var(--cream2);font-size:1.1rem;margin-bottom:1rem;opacity:.7">Ausentes &middot; Siempre en Nuestros Corazones</h3>
       <div class="absent-grid" id="absent-grid"></div>
-      <h3 style="font-family:var(--serif);color:var(--cream2);font-size:1.1rem;margin-top:2rem;margin-bottom:1rem;opacity:.7">Todav&iacute;a sin Debutar</h3>
+      <h3 style="font-family:var(--serif);color:var(--cream2);font-size:1.1rem;margin-top:2rem;margin-bottom:1rem;opacity:.5">Todav&iacute;a sin Debutar</h3>
       <div class="absent-grid" id="novatos-grid"></div>
     </div>
   </div>
@@ -288,10 +277,7 @@ a{color:inherit;text-decoration:none}
 
 <section id="champions">
   <div class="page-content">
-    <div class="page-header">
-      <h2>El Sal&oacute;n de Campeones</h2>
-      <p>Los que alzaron La Jarra de Clarete</p>
-    </div>
+    <div class="page-header"><h2>El Sal&oacute;n de Campeones</h2><p>Los que alzaron La Jarra de Clarete</p></div>
     <div class="champs-wrapper">
       <img src="trofeo/trofeo_recorte.png" class="champs-trophy-bg" alt="" onerror="this.style.display='none'">
       <div class="champions-list" id="champions-list"><div class="loading">Cargando...</div></div>
@@ -325,36 +311,33 @@ a{color:inherit;text-decoration:none}
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-var REPO  = 'JuanNaya/JarraClarete';
-var RAW   = 'https://raw.githubusercontent.com/' + REPO + '/main';
-var BASE  = 'https://juannaya.github.io/JarraClarete';
+var RAW  = 'https://raw.githubusercontent.com/JuanNaya/JarraClarete/main';
+var BASE = 'https://juannaya.github.io/JarraClarete';
 var OPEN_ICON = 'https://www.theopen.com/-/media/images/logo-the-open-symbol.png?w=640&hash=69A664BB4B30E4DCF2A2660C55782753';
-
 var JUGADORES_IDS = ['yago_mielgo','juan_naya','luciano_diaz','xulio_beiras','santi_gonzalez','jose_cuervo','jose_gonzalez','gabriel_miguel','javier_garcia','pedro_martinez'];
 var AUSENTES_IDS  = ['fernando_ortiz','juantxo_mielgo','manuel_gonzalez'];
 var NOVATOS_IDS   = ['manuel_orio'];
-var EDICIONES     = [];
-var TEE_META      = [
-  {date:'13 Mayo \u00b7 Mi\u00e9rcoles', course:'La Hacienda Links',      url:'https://lahaciendagolf.com/links-course/'},
-  {date:'14 Mayo \u00b7 Jueves',         course:'Dehesa Montenmedio',     url:'https://dehesamontenmedio.com/golf-2/'},
-  {date:'15 Mayo \u00b7 Viernes',        course:'La Ca\u00f1ada Golf Club', url:'https://lacanadagolf.com/'},
-  {date:'16 Mayo \u00b7 S\u00e1bado \u00b7 FINAL', course:'La Hacienda Heathlands', url:'https://lahaciendagolf.com/heathland-course/'}
+var TEE_META = [
+  {date:'13 Mayo - Miercoles', course:'La Hacienda Links',       url:'https://lahaciendagolf.com/links-course/'},
+  {date:'14 Mayo - Jueves',    course:'Dehesa Montenmedio',      url:'https://dehesamontenmedio.com/golf-2/'},
+  {date:'15 Mayo - Viernes',   course:'La Canada Golf Club',     url:'https://lacanadagolf.com/'},
+  {date:'16 Mayo - Sabado - FINAL', course:'La Hacienda Heathlands', url:'https://lahaciendagolf.com/heathland-course/'}
 ];
-
-var _players = [];
-var _gallery = [];
+var _players   = [];
+var _gallery   = [];
 var _galleryIdx = 0;
 var _galleries = {};
+var _ediciones = [];
 
 function fetchJSON(path) {
   return fetch(RAW + '/' + path + '?_=' + Date.now())
-    .then(function(r){ return r.ok ? r.json() : null; })
-    .catch(function(){ return null; });
+    .then(function(r) { return r.ok ? r.json() : null; })
+    .catch(function() { return null; });
 }
 
 function show(id, btn) {
-  document.querySelectorAll('section').forEach(function(s){ s.classList.remove('active'); });
-  document.querySelectorAll('.nav-links button').forEach(function(b){ b.classList.remove('active'); });
+  document.querySelectorAll('section').forEach(function(s) { s.classList.remove('active'); });
+  document.querySelectorAll('.nav-links button').forEach(function(b) { b.classList.remove('active'); });
   document.getElementById(id).classList.add('active');
   btn.classList.add('active');
   window.scrollTo(0,0);
@@ -363,18 +346,22 @@ function show(id, btn) {
 
 function tick() {
   var diff = new Date('2026-05-13T09:00:00+02:00') - new Date();
-  if (diff <= 0) { document.querySelector('.countdown').innerHTML = '<div style="font-family:var(--serif);font-size:1.4rem;color:var(--gold)">El torneo ha comenzado!</div>'; return; }
+  if (diff <= 0) {
+    document.querySelector('.countdown').innerHTML = '<div style="font-family:var(--serif);font-size:1.4rem;color:var(--gold)">El torneo ha comenzado!</div>';
+    return;
+  }
   document.getElementById('cd-d').textContent = String(Math.floor(diff/86400000)).padStart(2,'0');
   document.getElementById('cd-h').textContent = String(Math.floor((diff%86400000)/3600000)).padStart(2,'0');
   document.getElementById('cd-m').textContent = String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
   document.getElementById('cd-s').textContent = String(Math.floor((diff%60000)/1000)).padStart(2,'0');
 }
 
-function totalPts(p) { return (p.r||[]).reduce(function(a,v){ return a+(v||0); }, 0); }
+function totalPts(p) { return (p.r||[]).reduce(function(a,v) { return a+(v||0); }, 0); }
 
-function playerAvatar(p) {
-  var ini = p.nombre.split(' ').map(function(w){return w[0];}).join('').slice(0,2).toUpperCase();
-  return '<div style="width:32px;height:32px;border-radius:50%;border:1px solid var(--gold);overflow:hidden;flex-shrink:0;background:var(--navy2);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:.75rem;color:var(--gold)">'
+function playerAvatar(p, size) {
+  size = size || 32;
+  var ini = p.nombre.split(' ').map(function(w) { return w[0]; }).join('').slice(0,2).toUpperCase();
+  return '<div style="width:'+size+'px;height:'+size+'px;border-radius:50%;border:2px solid var(--gold);overflow:hidden;flex-shrink:0;background:var(--navy2);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:'+(size*0.35)+'px;color:var(--gold)">'
     + '<img src="' + BASE + '/jugadores/' + p.id + '/Profile.png" style="width:100%;height:100%;object-fit:cover" onerror="this.parentElement.textContent=\'' + ini + '\'">'
     + '</div>';
 }
@@ -382,31 +369,31 @@ function playerAvatar(p) {
 function renderLb(roundIdx) {
   var lb = document.getElementById('lb-body');
   var sorted = roundIdx === 'general'
-    ? _players.slice().sort(function(a,b){ return totalPts(b)-totalPts(a); })
-    : _players.slice().sort(function(a,b){ return (b.r[roundIdx]||0)-(a.r[roundIdx]||0); });
+    ? _players.slice().sort(function(a,b) { return totalPts(b)-totalPts(a); })
+    : _players.slice().sort(function(a,b) { return (b.r[roundIdx]||0)-(a.r[roundIdx]||0); });
   lb.innerHTML = sorted.map(function(p,i) {
     var cls = i===0?'pos-1':i===1?'pos-2':i===2?'pos-3':'';
-    var r   = p.r || [null,null,null,null];
+    var r   = p.r || [0,0,0,0];
     var tot = totalPts(p);
-    var av  = '<td style="padding:.5rem .4rem .5rem .8rem;width:36px">' + playerAvatar(p) + '</td>';
+    var av  = '<td style="padding:.5rem .4rem .5rem .8rem;width:36px">' + playerAvatar(p,32) + '</td>';
     if (roundIdx !== 'general') {
       var v = r[roundIdx];
       return '<tr><td><span class="pos-badge ' + cls + '">' + (i+1) + '</span></td>' + av
         + '<td><span class="player-name">' + p.nombre + '</span><span class="aka">' + p.alias + '</span></td>'
         + '<td style="text-align:center;color:var(--muted);font-size:.8rem">' + p.handicap + '</td>'
-        + '<td style="text-align:center;color:' + (v ? 'var(--cream)' : 'var(--muted)') + '">' + (v !== null ? v : 0) + '</td>'
+        + '<td style="text-align:center;color:' + (v ? 'var(--cream)' : 'var(--muted)') + '">' + (v||0) + '</td>'
         + '<td style="text-align:center"><span class="total-pts">' + (v||0) + '</span></td></tr>';
     }
     return '<tr><td><span class="pos-badge ' + cls + '">' + (i+1) + '</span></td>' + av
       + '<td><span class="player-name">' + p.nombre + '</span><span class="aka">' + p.alias + '</span></td>'
       + '<td style="text-align:center;color:var(--muted);font-size:.8rem">' + p.handicap + '</td>'
-      + r.map(function(v){ return '<td style="text-align:center;color:' + (v ? 'var(--cream)' : 'var(--muted)') + '">' + (v !== null ? v : 0) + '</td>'; }).join('')
+      + r.map(function(v) { return '<td style="text-align:center;color:' + (v ? 'var(--cream)' : 'var(--muted)') + '">' + (v||0) + '</td>'; }).join('')
       + '<td style="text-align:center"><span class="total-pts">' + tot + '</span></td></tr>';
   }).join('');
 }
 
 function showRound(idx, btn) {
-  document.querySelectorAll('.round-tab').forEach(function(t){ t.classList.remove('active'); });
+  document.querySelectorAll('.round-tab').forEach(function(t) { t.classList.remove('active'); });
   btn.classList.add('active');
   renderLb(idx);
 }
@@ -417,11 +404,10 @@ function openGallery(year, idx) {
   renderLightbox();
 }
 
-function openPhoto(idx) { _galleryIdx = idx; renderLightbox(); }
-
 function renderLightbox() {
   var old = document.getElementById('lightbox');
   if (old) old.remove();
+  if (!_gallery.length) return;
   var ov = document.createElement('div');
   ov.id = 'lightbox';
   ov.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.93);z-index:999;display:flex;align-items:center;justify-content:center';
@@ -435,8 +421,8 @@ function renderLightbox() {
     + '</div>'
     + '<button onclick="document.getElementById(\'lightbox\').remove()" style="position:absolute;top:1rem;right:1rem;background:none;border:none;color:rgba(201,168,76,.7);font-size:1.5rem;cursor:pointer">&#x2715;</button>';
   document.body.appendChild(ov);
-  ov.addEventListener('click', function(e){ if (e.target === ov) ov.remove(); });
-  document.onkeydown = function(e){
+  ov.addEventListener('click', function(e) { if (e.target === ov) ov.remove(); });
+  document.onkeydown = function(e) {
     if (!document.getElementById('lightbox')) return;
     if (e.key === 'ArrowRight') moveGallery(1);
     if (e.key === 'ArrowLeft')  moveGallery(-1);
@@ -461,207 +447,220 @@ function initMap() {
   var campos = [
     {n:'La Hacienda Links R1', lat:36.374, lng:-6.101, url:'https://lahaciendagolf.com/links-course/'},
     {n:'Dehesa Montenmedio R2', lat:36.268, lng:-5.941, url:'https://dehesamontenmedio.com/golf-2/'},
-    {n:'La Ca\u00f1ada R3', lat:36.323, lng:-5.401, url:'https://lacanadagolf.com/'},
+    {n:'La Canada R3', lat:36.323, lng:-5.401, url:'https://lacanadagolf.com/'},
     {n:'La Hacienda Heathlands R4 FINAL', lat:36.380, lng:-6.105, url:'https://lahaciendagolf.com/heathland-course/'}
   ];
-  var origenes = [{n:'Vigo',lat:42.231,lng:-8.712},{n:'Nigr\u00e1n',lat:42.147,lng:-8.792},{n:'Madrid',lat:40.416,lng:-3.703},{n:'Salamanca',lat:40.964,lng:-5.664}];
+  var origenes = [{n:'Vigo',lat:42.231,lng:-8.712},{n:'Nigran',lat:42.147,lng:-8.792},{n:'Madrid',lat:40.416,lng:-3.703},{n:'Salamanca',lat:40.964,lng:-5.664}];
   var casa = [36.385,-5.184];
-  campos.forEach(function(c){ L.marker([c.lat,c.lng],{icon:iC}).addTo(map).bindPopup('<b style="color:#c9a84c">'+c.n+'</b><br><a href="'+c.url+'" target="_blank" style="color:#c9a84c;font-size:.8rem">Ver campo</a>'); });
-  L.marker(casa,{icon:iH}).addTo(map).bindPopup('<b style="color:#e8c878">Base de Operaciones</b><br><span style="font-size:.8rem">Sotogrande, San Roque</span>');
-  origenes.forEach(function(o){
+  campos.forEach(function(c) { L.marker([c.lat,c.lng],{icon:iC}).addTo(map).bindPopup('<b style="color:#c9a84c">'+c.n+'</b><br><a href="'+c.url+'" target="_blank" style="color:#c9a84c;font-size:.8rem">Ver campo</a>'); });
+  L.marker(casa,{icon:iH}).addTo(map).bindPopup('<b style="color:#e8c878">Base de Operaciones</b><br><span style="font-size:.8rem">Sotogrande</span>');
+  origenes.forEach(function(o) {
     L.marker([o.lat,o.lng],{icon:iO}).addTo(map).bindPopup('<b style="color:#c9a84c">Salida: '+o.n+'</b>');
     L.polyline([[o.lat,o.lng],casa],{color:'#c9a84c',weight:1.5,opacity:.4,dashArray:'6,9'}).addTo(map);
   });
   L.polyline(campos.map(function(c){return [c.lat,c.lng];}),{color:'#e8c878',weight:2.5,opacity:.7}).addTo(map);
 }
 
-async function loadPlayers() {
-  var grid = document.getElementById('players-grid');
-  var absentGrid = document.getElementById('absent-grid');
-  grid.innerHTML = '';
-  absentGrid.innerHTML = '';
-  var all    = await Promise.all(JUGADORES_IDS.map(function(id){ return fetchJSON('jugadores/'+id+'/profile.json'); }));
-  var absAll = await Promise.all(AUSENTES_IDS.map(function(id){ return fetchJSON('jugadores/'+id+'/profile.json'); }));
-  var novAll = await Promise.all(NOVATOS_IDS.map(function(id){ return fetchJSON('jugadores/'+id+'/profile.json'); }));
-  var activos = all.filter(Boolean).sort(function(a,b){ return a.handicap-b.handicap; });
-  if (!activos.length) { grid.innerHTML = '<div class="loading">Sube los profile.json a GitHub.</div>'; }
-  activos.forEach(function(p) {
-    var ini = p.nombre.split(' ').map(function(w){return w[0];}).join('').slice(0,2).toUpperCase();
-    var tags = (p.campeon||[]).map(function(c){
-      var anyo = c['año'] || c.ano || c.year || '?';
-      return '<a href="'+c.url+'" target="_blank" class="champ-tag"><img src="'+OPEN_ICON+'" onerror="this.style.display=\'none\'"> '+anyo+' \u00b7 '+c.lugar+'</a>';
-    }).join('');
-    var ediciones = EDICIONES.filter(function(e){ return (e.participantes||[]).indexOf(p.id) !== -1; })
-      .map(function(e){ return e['año']; }).sort().join(' &middot; ');
-    var edTag = ediciones ? '<div style="margin-top:.6rem;font-size:.68rem;color:var(--muted);letter-spacing:.05em">Ediciones: <span style="color:var(--gold2)">' + ediciones + '</span></div>' : '';
-    grid.innerHTML += '<div class="player-card">'
-      + '<div style="display:flex;align-items:center;gap:.8rem;margin-bottom:.7rem">'
-      + '<div class="player-avatar"><img src="'+BASE+'/jugadores/'+p.id+'/Profile.png" alt="'+p.nombre+'" onerror="this.parentElement.textContent=\''+ini+'\'"></div>'
-      + '<div style="min-width:0;flex:1">'
-      + '<div style="font-family:var(--serif);color:var(--cream);font-size:1rem">'+p.nombre+'</div>'
-      + '<div class="player-aka">aka '+p.alias+'</div>'
-      + '<div class="player-hcp">Hcp '+p.handicap+' &middot; <span style="font-family:monospace;font-size:.62rem;opacity:.6">'+p.licencia+'</span></div>'
-      + '</div></div>'
-      + '<p class="player-bio">'+p.bio+'</p>'
-      + edTag + tags + '</div>';
+function loadPlayers() {
+  return Promise.all([
+    Promise.all(JUGADORES_IDS.map(function(id) { return fetchJSON('jugadores/'+id+'/profile.json'); })),
+    Promise.all(AUSENTES_IDS.map(function(id)  { return fetchJSON('jugadores/'+id+'/profile.json'); })),
+    Promise.all(NOVATOS_IDS.map(function(id)   { return fetchJSON('jugadores/'+id+'/profile.json'); }))
+  ]).then(function(results) {
+    var all    = results[0];
+    var absAll = results[1];
+    var novAll = results[2];
+    var grid       = document.getElementById('players-grid');
+    var absentGrid = document.getElementById('absent-grid');
+    var novatosGrid= document.getElementById('novatos-grid');
+    grid.innerHTML = '';
+    absentGrid.innerHTML = '';
+    novatosGrid.innerHTML = '';
+    var activos = all.filter(Boolean).sort(function(a,b) { return a.handicap-b.handicap; });
+    if (!activos.length) { grid.innerHTML = '<div class="loading">Sube los profile.json a GitHub.</div>'; }
+    activos.forEach(function(p) {
+      var ini  = p.nombre.split(' ').map(function(w){return w[0];}).join('').slice(0,2).toUpperCase();
+      var anyo = function(c){ return c['año']||c.ano||c.year||'?'; };
+      var tags = (p.campeon||[]).map(function(c) {
+        return '<a href="'+c.url+'" target="_blank" class="champ-tag"><img src="'+OPEN_ICON+'" onerror="this.style.display=\'none\'"> '+anyo(c)+' - '+c.lugar+'</a>';
+      }).join('');
+      var ediciones = _ediciones.filter(function(e) { return (e.participantes||[]).indexOf(p.id) !== -1; })
+        .map(function(e) { return e['año']||e.ano; }).sort().join(' - ');
+      var edTag = ediciones ? '<div style="margin-top:.5rem;font-size:.68rem;color:var(--muted)">Ediciones: <span style="color:var(--gold2)">'+ediciones+'</span></div>' : '';
+      grid.innerHTML += '<div class="player-card">'
+        + '<div style="display:flex;align-items:center;gap:.8rem;margin-bottom:.7rem">'
+        + '<div class="player-avatar"><img src="'+BASE+'/jugadores/'+p.id+'/Profile.png" alt="'+p.nombre+'" onerror="this.parentElement.textContent=\''+ini+'\'"></div>'
+        + '<div style="min-width:0;flex:1">'
+        + '<div style="font-family:var(--serif);color:var(--cream);font-size:1rem">'+p.nombre+'</div>'
+        + '<div class="player-aka">aka '+p.alias+'</div>'
+        + '<div class="player-hcp">Hcp '+p.handicap+' - <span style="font-family:monospace;font-size:.62rem;opacity:.6">'+p.licencia+'</span></div>'
+        + '</div></div>'
+        + '<p class="player-bio">'+p.bio+'</p>'
+        + edTag + tags + '</div>';
+    });
+    absAll.filter(Boolean).forEach(function(p) {
+      absentGrid.innerHTML += '<div class="absent-card"><h3>'+p.nombre+'</h3><div class="absent-aka">aka '+p.alias+'</div><p>'+p.bio+'</p></div>';
+    });
+    novAll.filter(Boolean).forEach(function(p) {
+      novatosGrid.innerHTML += '<div class="absent-card" style="border-color:rgba(201,168,76,.12)"><h3>'+p.nombre+'</h3><div class="absent-aka">aka '+p.alias+'</div><p>'+p.bio+'</p></div>';
+    });
+    return activos;
   });
-  absAll.filter(Boolean).forEach(function(p) {
-    absentGrid.innerHTML += '<div class="absent-card"><h3>'+p.nombre+'</h3><div class="absent-aka">aka '+p.alias+'</div><p>'+p.bio+'</p></div>';
-  });
-  var novatosGrid = document.getElementById('novatos-grid');
-  novAll.filter(Boolean).forEach(function(p) {
-    novatosGrid.innerHTML += '<div class="absent-card" style="border-color:rgba(201,168,76,.15)"><h3>'+p.nombre+'</h3><div class="absent-aka">aka '+p.alias+'</div><p>'+p.bio+'</p></div>';
-  });
-  return activos;
 }
 
-async function loadLeaderboard(players) {
-  var data = await fetchJSON('data/resultados.json');
-  _players = players.map(function(p) {
-    var res = data ? data.find(function(d){ return d.id === p.id; }) : null;
-    return Object.assign({}, p, {r: res ? res.rondas : [0,0,0,0]});
+function loadLeaderboard(players) {
+  return fetchJSON('data/resultados.json').then(function(data) {
+    _players = players.map(function(p) {
+      var res = data ? data.find(function(d) { return d.id === p.id; }) : null;
+      return Object.assign({}, p, {r: res ? res.rondas : [0,0,0,0]});
+    });
+    renderLb('general');
   });
-  renderLb('general');
 }
 
-async function loadChampions(players) {
+function loadChampions(players) {
   var cl = document.getElementById('champions-list');
   cl.innerHTML = '';
   var champs = [];
   players.forEach(function(p) {
     (p.campeon||[]).forEach(function(c) {
-      var anyo = c.año || c.ano || c.year || '?';
+      var anyo = c['año']||c.ano||c.year||'?';
       champs.push({anyo:anyo, campo:c.campo, url:c.url, lugar:c.lugar, nombre:p.nombre, alias:p.alias, id:p.id});
     });
   });
-  champs.sort(function(a,b){ return b.anyo - a.anyo; });
+  champs.sort(function(a,b) { return b.anyo - a.anyo; });
   champs.forEach(function(c) {
     var ini = c.nombre.split(' ').map(function(w){return w[0];}).join('').slice(0,2).toUpperCase();
-    var avatar = '<div style="width:48px;height:48px;border-radius:50%;border:2px solid var(--gold);overflow:hidden;flex-shrink:0;background:var(--navy);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1rem;color:var(--gold)">'
-      + '<img src="' + BASE + '/jugadores/' + c.id + '/Profile.png" style="width:100%;height:100%;object-fit:cover" onerror="this.parentElement.textContent=\'' + ini + '\'">'
+    var av = '<div style="width:48px;height:48px;border-radius:50%;border:2px solid var(--gold);overflow:hidden;flex-shrink:0;background:var(--navy);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1rem;color:var(--gold)">'
+      + '<img src="'+BASE+'/jugadores/'+c.id+'/Profile.png" style="width:100%;height:100%;object-fit:cover" onerror="this.parentElement.textContent=\''+ini+'\'">'
       + '</div>';
     cl.innerHTML += '<div class="champion-row">'
-      + '<div class="champ-year-col">' + c.anyo + '</div>'
-      + avatar
-      + '<div class="champ-info"><div class="champ-name-row">' + c.nombre + '<span class="c-aka">' + c.alias + '</span></div>'
-      + '<div class="champ-course-row"><a href="' + c.url + '" target="_blank">' + c.campo + '</a> \u00b7 ' + c.lugar + '</div></div>'
-      + '<div class="champ-score-col">\u2013 pts</div></div>';
+      + '<div class="champ-year-col">'+c.anyo+'</div>'
+      + av
+      + '<div class="champ-info"><div class="champ-name-row">'+c.nombre+'<span class="c-aka">'+c.alias+'</span></div>'
+      + '<div class="champ-course-row"><a href="'+c.url+'" target="_blank">'+c.campo+'</a> - '+c.lugar+'</div></div>'
+      + '<div style="font-family:var(--serif);color:var(--gold2);font-size:1.1rem">- pts</div></div>';
   });
 }
 
-async function loadCronicas() {
-  var data = await fetchJSON('data/cronicas.json');
-  if (!data || !data.length) return;
-  var container = document.getElementById('cronicas-container');
-  container.innerHTML = data.map(function(c) {
-    return '<div class="post-card">'
-      + '<div class="post-round">Jornada '+c.jornada+' \u00b7 '+c.fecha+' \u00b7 '+c.campo+'</div>'
-      + '<h3>'+c.titulo+'</h3><p>'+c.texto+'</p>'
-      + (c.lider ? '<div style="margin-top:.8rem;font-size:.78rem;color:var(--gold)">L\u00edder tras la jornada: <b>'+c.lider+'</b></div>' : '')
-      + '</div>';
-  }).join('');
+function loadCronicas() {
+  return fetchJSON('data/cronicas.json').then(function(data) {
+    if (!data||!data.length) return;
+    var container = document.getElementById('cronicas-container');
+    container.innerHTML = data.map(function(c) {
+      return '<div class="post-card">'
+        + '<div class="post-round">Jornada '+c.jornada+' - '+c.fecha+' - '+c.campo+'</div>'
+        + '<h3>'+c.titulo+'</h3><p>'+c.texto+'</p>'
+        + (c.lider ? '<div style="margin-top:.8rem;font-size:.78rem;color:var(--gold)">Lider: <b>'+c.lider+'</b></div>' : '')
+        + '</div>';
+    }).join('');
+  });
 }
 
-async function loadReglamento() {
-  var data = await fetchJSON('data/reglamento.json');
-  if (!data) return;
-  var rg = document.getElementById('rules-grid');
-  rg.innerHTML = data.map(function(r) {
-    return '<div class="rule-item"><div class="rule-num">' + r.num + '</div>'
-      + '<div><div class="rule-title">' + r.titulo + '</div>'
-      + '<div class="rule-text">' + r.texto + '</div></div></div>';
-  }).join('');
+function loadReglamento() {
+  return fetchJSON('data/reglamento.json').then(function(data) {
+    if (!data) return;
+    var rg = document.getElementById('rules-grid');
+    rg.innerHTML = data.map(function(r) {
+      return '<div class="rule-item"><div class="rule-num">'+r.num+'</div>'
+        + '<div><div class="rule-title">'+r.titulo+'</div>'
+        + '<div class="rule-text">'+r.texto+'</div></div></div>';
+    }).join('');
+  });
 }
-  try {
-    var td = document.getElementById('tee-days');
-    td.innerHTML = '';
-    for (var i = 0; i < 4; i++) {
-      var meta   = TEE_META[i];
-      var data   = await fetchJSON('data/salidas0' + (i+1) + '.json');
+
+function loadTeeTimes() {
+  var td = document.getElementById('tee-days');
+  td.innerHTML = '';
+  var promises = TEE_META.map(function(meta, i) {
+    return fetchJSON('data/salidas0'+(i+1)+'.json').then(function(data) {
       var grupos = (data && data.grupos) ? data.grupos : [];
-      var body   = grupos.length
+      var body = grupos.length
         ? '<table class="tee-table"><thead><tr><th>#</th><th>Hora</th><th>Hoyo</th><th>Jugadores</th></tr></thead><tbody>'
-          + grupos.map(function(g, gi) {
-              return '<tr>'
-                + '<td style="font-family:var(--serif);color:var(--gold2)">' + (gi+1) + '</td>'
-                + '<td style="font-family:monospace;color:var(--cream)">' + g.hora + '</td>'
-                + '<td style="color:var(--muted);text-align:center">' + (g.hoyo||1) + '</td>'
-                + '<td>' + (Array.isArray(g.jugadores) ? g.jugadores.join(' \u00b7 ') : g.jugadores) + '</td>'
-                + '</tr>';
+          + grupos.map(function(g,gi) {
+              return '<tr><td style="font-family:var(--serif);color:var(--gold2)">'+(gi+1)+'</td>'
+                + '<td style="font-family:monospace;color:var(--cream)">'+g.hora+'</td>'
+                + '<td style="color:var(--muted);text-align:center">'+(g.hoyo||1)+'</td>'
+                + '<td>'+(Array.isArray(g.jugadores) ? g.jugadores.join(' - ') : g.jugadores)+'</td></tr>';
             }).join('')
           + '</tbody></table>'
         : '<div style="padding:1.2rem 1.5rem;font-size:.82rem;color:var(--muted);font-style:italic">Horarios pendientes de publicar.</div>';
+      return {idx:i, meta:meta, body:body};
+    });
+  });
+  Promise.all(promises).then(function(days) {
+    days.sort(function(a,b){return a.idx-b.idx;}).forEach(function(d) {
       td.innerHTML += '<div class="tee-day">'
-        + '<div class="tee-day-header">'
-        + '<div class="tee-day-title">Jornada ' + (i+1) + ' \u00b7 ' + meta.date + '</div>'
-        + '<a href="' + meta.url + '" target="_blank" style="font-size:.75rem;color:var(--gold);text-decoration:underline;text-decoration-color:rgba(201,168,76,.3)">' + meta.course + '</a>'
-        + '</div>' + body + '</div>';
-    }
-  } catch(e) { console.warn('loadTeeTimes:', e); }
+        + '<div class="tee-day-header"><div class="tee-day-title">Jornada '+(d.idx+1)+' - '+d.meta.date+'</div>'
+        + '<a href="'+d.meta.url+'" target="_blank" style="font-size:.75rem;color:var(--gold);text-decoration:underline">'+d.meta.course+'</a></div>'
+        + d.body + '</div>';
+    });
+  });
 }
 
-async function renderEditions() {
-  var edData = await fetchJSON('data/ediciones.json');
-  if (!edData) return;
-  EDICIONES = edData;
-  var el = document.getElementById('editions-list');
-  var sorted = edData.slice().sort(function(a,b){ return a['año']-b['año']; });
-  for (var i = 0; i < sorted.length; i++) {
-    var e = sorted[i];
-    var anyo = e['año'];
-    var esCurrent = anyo === 2026;
-    var camposList = (e.campos||[]).join(' &middot; ');
-    var header = '<div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1rem">'
-      + '<div>'
-      + '<h3 style="font-family:var(--serif);color:var(--gold);font-size:1.2rem;margin-bottom:.2rem">Edici\u00f3n ' + anyo + ' &middot; ' + e.lugar + '</h3>'
-      + '<div style="font-size:.75rem;color:var(--muted);margin-bottom:.4rem">' + e.fechas + '</div>'
-      + '<div style="font-size:.78rem;color:var(--cream2);opacity:.8">' + camposList + '</div>'
-      + '</div>'
-      + (e.campeon
-          ? '<div style="text-align:right;flex-shrink:0"><div style="font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:.2rem">Campe\u00f3n</div>'
-            + '<div style="font-family:var(--serif);color:var(--gold);font-size:1rem">' + e.campeon + '</div></div>'
-          : '<div style="text-align:right;flex-shrink:0"><div style="font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:.2rem">Campe\u00f3n</div>'
-            + '<div style="font-family:var(--serif);color:var(--gold2);font-size:.9rem;font-style:italic">Por decidir</div></div>')
-      + '</div>';
-    var desc = e.descripcion
-      ? '<p style="font-size:.82rem;color:var(--cream2);opacity:.75;line-height:1.6;margin-bottom:1rem">' + e.descripcion + '</p>'
-      : '';
-    el.innerHTML += '<div class="gallery-section">'
-      + header + desc
-      + '<div class="gallery-grid" id="gallery-' + anyo + '"><div class="loading">Cargando fotos...</div></div>'
-      + '</div>';
-
-    if (!esCurrent) {
-      var fotos = await fetchJSON(anyo + '/fotos.json');
-      var gEl = document.getElementById('gallery-' + anyo);
-      if (!fotos || !fotos.length) {
-        gEl.innerHTML = '<div class="gallery-item"><span style="opacity:.3;font-size:1.5rem">&#128247;</span><span>Sin fotos a\u00FAn</span></div>';
-        continue;
-      }
-      var urls = fotos.map(function(f){ return RAW + '/' + anyo + '/' + f; });
-      _galleries[anyo] = urls;
-      gEl.innerHTML = fotos.map(function(f, idx) {
-        return '<div class="gallery-item" style="cursor:pointer" onclick="openGallery(' + anyo + ',' + idx + ')">'
-          + '<img src="' + RAW + '/' + anyo + '/' + f + '" style="width:100%;height:100%;object-fit:cover" onerror="this.closest(\'.gallery-item\').style.display=\'none\'">'
-          + '</div>';
-      }).join('');
-    } else {
-      document.getElementById('gallery-' + anyo).innerHTML = '<div style="padding:1rem;font-size:.82rem;color:var(--muted);font-style:italic">Las fotos se ir\u00e1n subiendo durante el torneo.</div>';
-    }
-  }
+function renderEditions() {
+  return fetchJSON('data/ediciones.json').then(function(data) {
+    if (!data) return;
+    _ediciones = data;
+    var el = document.getElementById('editions-list');
+    var sorted = data.slice().sort(function(a,b){ return (a['año']||a.ano)-(b['año']||b.ano); });
+    var chain = Promise.resolve();
+    sorted.forEach(function(e) {
+      var anyo = e['año']||e.ano;
+      var esCurrent = anyo === 2026;
+      var camposList = (e.campos||[]).join(' - ');
+      el.innerHTML += '<div class="gallery-section">'
+        + '<div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:.8rem">'
+        + '<div>'
+        + '<h3 style="font-family:var(--serif);color:var(--gold);font-size:1.2rem;margin-bottom:.2rem">Edicion '+anyo+' - '+e.lugar+'</h3>'
+        + '<div style="font-size:.75rem;color:var(--muted);margin-bottom:.3rem">'+e.fechas+'</div>'
+        + '<div style="font-size:.78rem;color:var(--cream2);opacity:.75">'+camposList+'</div>'
+        + '</div>'
+        + (e.campeon
+          ? '<div style="text-align:right;flex-shrink:0"><div style="font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:.2rem">Campeon</div><div style="font-family:var(--serif);color:var(--gold)">'+e.campeon+'</div></div>'
+          : '<div style="text-align:right;flex-shrink:0"><div style="font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:.2rem">Campeon</div><div style="font-family:var(--serif);color:var(--gold2);font-style:italic">Por decidir</div></div>')
+        + '</div>'
+        + (e.descripcion ? '<p style="font-size:.82rem;color:var(--cream2);opacity:.75;line-height:1.6;margin-bottom:1rem">'+e.descripcion+'</p>' : '')
+        + '<div class="gallery-grid" id="gallery-'+anyo+'"><div class="loading">Cargando...</div></div>'
+        + '</div>';
+      chain = chain.then(function() {
+        if (esCurrent) {
+          document.getElementById('gallery-'+anyo).innerHTML = '<div style="padding:1rem;font-size:.82rem;color:var(--muted);font-style:italic">Las fotos se iran subiendo durante el torneo.</div>';
+          return;
+        }
+        return fetchJSON(anyo+'/fotos.json').then(function(fotos) {
+          var gEl = document.getElementById('gallery-'+anyo);
+          if (!fotos||!fotos.length) {
+            gEl.innerHTML = '<div class="gallery-item"><span style="opacity:.3;font-size:1.5rem">&#128247;</span><span>Sin fotos aun</span></div>';
+            return;
+          }
+          var urls = fotos.map(function(f){ return RAW+'/'+anyo+'/'+f; });
+          _galleries[anyo] = urls;
+          gEl.innerHTML = fotos.map(function(f,idx) {
+            return '<div class="gallery-item" style="cursor:pointer" onclick="openGallery('+anyo+','+idx+')">'
+              + '<img src="'+RAW+'/'+anyo+'/'+f+'" style="width:100%;height:100%;object-fit:cover" onerror="this.closest(\'.gallery-item\').style.display=\'none\'">'
+              + '</div>';
+          }).join('');
+        });
+      });
+    });
+    return chain;
+  });
 }
 
-async function init() {
+function init() {
   tick();
   setInterval(tick, 1000);
   setTimeout(initMap, 500);
-  renderEditions();
+  loadReglamento();
   loadTeeTimes();
   loadCronicas();
-  loadReglamento();
-  var players = await loadPlayers();
-  await loadChampions(players);
-  await loadLeaderboard(players);
+  renderEditions().then(function() {
+    return loadPlayers();
+  }).then(function(players) {
+    loadChampions(players);
+    return loadLeaderboard(players);
+  });
 }
 
 init();
