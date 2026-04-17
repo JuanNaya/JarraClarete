@@ -1,18 +1,10 @@
 [
   {
     "jornada": 0,
-    "fecha": "12 Mayo",
-    "campo": "Sotogrande",
-    "titulo": "Que afilen los cuchillos",
-    "texto": "Manana arranca La Jarra de Clarete Trophy 2026. Cuatro campos, cuatro dias, diez rivales y un unico trofeo. El vigente campeon, Canones, llega con la diana pintada en la espalda. El Doctor viene a operar. Lucius trae el pedigri de St. Andrews. Y el resto tambien tiene algo que decir. Que afilen los cuchillos, que manana empieza la leyenda.",
+    "fecha": "17 Abril",
+    "campo": "Angustias",
+    "titulo": "Se van afilando los cuchillos",
+    "texto": "Estamos a menos de cuatro semanas del arranque de la séptima edición de la Jarra de Clarete, edición 2026. Cuatro campos, cuatro dias, diez rivales y un unico trofeo. El vigente campeon, Cañones, llega con la diana pintada en la espalda. El Doctor viene a operar. Lucius trae el pedigri de St. Andrews. Y el resto tambien tiene algo que decir, todos con los cuchillos bien afilados!! Mucha suerte chavales!!",
     "lider": null
-  },
-  {
-    "jornada": 1,
-    "fecha": "13 Mayo",
-    "campo": "La Hacienda Links",
-    "titulo": "El Doctor receta el primer golpe",
-    "texto": "La Hacienda Links se desperto con viento del Atlantico y diez tipos con ganas de sangre. Yago Mielgo, fiel a su apodo, opero con precision quirurgica desde el primer hoyo. Canones salio a defender su corona pero el campo le puso a prueba. Al final del dia el marcador habla claro: hay un nuevo lider provisional y la batalla acaba de empezar.",
-    "lider": "Yago Mielgo"
   }
 ]
