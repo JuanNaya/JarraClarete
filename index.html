@@ -213,11 +213,11 @@ a{color:inherit;text-decoration:none}
     <div style="margin-top:2rem">
       <h3 style="font-family:var(--serif);color:var(--gold);font-size:1.2rem;margin-bottom:1rem">La Base de Operaciones</h3>
       <div class="casa-card">
-        <img src="https://a0.muscache.com/im/pictures/81064202/427bb5d1_original.jpg?im_w=720" class="casa-img" alt="Casa Sotogrande" onerror="this.style.display='none'">
+        <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/521266961.jpg?k=ced3a4825c41aec9d70517b03ddaa2c2738ef7f3887bbdebf1aeb9d88f99e6f0&o=" class="casa-img" alt="Casa Margarita" onerror="this.style.display='none'">
         <div class="casa-info">
-          <h3>Casa en Sotogrande</h3>
-          <p>La elegante base de operaciones para La Jarra de Clarete 2026. Ubicada en la exclusiva urbanizaci&oacute;n de Sotogrande, San Roque.</p>
-          <a href="https://www.airbnb.es" target="_blank" class="casa-link">Ver alojamiento en Airbnb &rarr;</a>
+          <h3>Casa Margarita</h3>
+          <p>La base de operaciones para La Jarra de Clarete 2026. Ubicada en La L&iacute;nea de la Concepci&oacute;n, a un paso de Gibraltar y en el coraz&oacute;n del sur de C&aacute;diz.</p>
+          <a href="https://www.booking.com/hotel/es/casa-margarita-la-linea-de-la-concepcion.es.html" target="_blank" class="casa-link">Ver alojamiento en Booking &rarr;</a>
         </div>
       </div>
     </div>
@@ -457,9 +457,9 @@ function initMap() {
     {n:'La Hacienda Heathlands R4 FINAL', lat:36.380, lng:-6.105, url:'https://lahaciendagolf.com/heathland-course/'}
   ];
   var origenes = [{n:'Vigo',lat:42.231,lng:-8.712},{n:'Nigran',lat:42.147,lng:-8.792},{n:'Madrid',lat:40.416,lng:-3.703},{n:'Salamanca',lat:40.964,lng:-5.664}];
-  var casa = [36.385,-5.184];
+  var casa = [36.167, -5.349];
   campos.forEach(function(c) { L.marker([c.lat,c.lng],{icon:iC}).addTo(map).bindPopup('<b style="color:#c9a84c">'+c.n+'</b><br><a href="'+c.url+'" target="_blank" style="color:#c9a84c;font-size:.8rem">Ver campo</a>'); });
-  L.marker(casa,{icon:iH}).addTo(map).bindPopup('<b style="color:#e8c878">Base de Operaciones</b><br><span style="font-size:.8rem">Sotogrande</span>');
+  L.marker(casa,{icon:iH}).addTo(map).bindPopup('<b style="color:#e8c878">Base de Operaciones</b><br><span style="font-size:.8rem">Casa Margarita, La Linea de la Concepcion</span>');
   origenes.forEach(function(o) {
     L.marker([o.lat,o.lng],{icon:iO}).addTo(map).bindPopup('<b style="color:#c9a84c">Salida: '+o.n+'</b>');
     L.polyline([[o.lat,o.lng],casa],{color:'#c9a84c',weight:1.5,opacity:.4,dashArray:'6,9'}).addTo(map);
