@@ -499,7 +499,10 @@ function loadPlayers() {
         + edTag + tags + '</div>';
     });
     absAll.filter(Boolean).forEach(function(p) {
-      absentGrid.innerHTML += '<div class="absent-card"><h3>'+p.nombre+'</h3><div class="absent-aka">aka '+p.alias+'</div><p>'+p.bio+'</p></div>';
+      var ediciones = _ediciones.filter(function(e) { return (e.participantes||[]).indexOf(p.id) !== -1; })
+        .map(function(e) { return e['año']||e.ano; }).sort().join(' - ');
+      var edTag = ediciones ? '<div style="margin-top:.5rem;font-size:.68rem;color:var(--muted)">Ediciones: <span style="color:var(--gold2)">'+ediciones+'</span></div>' : '';
+      absentGrid.innerHTML += '<div class="absent-card"><h3>'+p.nombre+'</h3><div class="absent-aka">aka '+p.alias+'</div><p>'+p.bio+'</p>'+edTag+'</div>';
     });
     novAll.filter(Boolean).forEach(function(p) {
       novatosGrid.innerHTML += '<div class="absent-card" style="border-color:rgba(201,168,76,.12)"><h3>'+p.nombre+'</h3><div class="absent-aka">aka '+p.alias+'</div><p>'+p.bio+'</p></div>';
@@ -627,7 +630,7 @@ function renderEditions() {
         if (esCurrent) {
           document.getElementById('gallery-'+anyo).innerHTML = '<div style="padding:1rem;font-size:.82rem;color:var(--muted);font-style:italic">Las fotos se iran subiendo durante el torneo.</div>';
           return;
-        } 
+        }
         return fetchJSON(anyo+'/fotos.json').then(function(fotos) {
           var gEl = document.getElementById('gallery-'+anyo);
           if (!fotos||!fotos.length) {
@@ -645,7 +648,7 @@ function renderEditions() {
       });
     });
     return chain;
-  }); 
+  });
 }
 
 function init() {
