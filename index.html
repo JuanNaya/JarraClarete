@@ -280,6 +280,8 @@ a{color:inherit;text-decoration:none}
     <div style="margin-top:2.5rem;padding-top:2rem;border-top:1px solid rgba(201,168,76,.12)">
       <h3 style="font-family:var(--serif);color:var(--cream2);font-size:1.1rem;margin-bottom:1rem;opacity:.7">Ausentes &middot; Siempre en Nuestros Corazones</h3>
       <div class="absent-grid" id="absent-grid"></div>
+      <h3 style="font-family:var(--serif);color:var(--cream2);font-size:1.1rem;margin-top:2rem;margin-bottom:1rem;opacity:.7">Todav&iacute;a sin Debutar</h3>
+      <div class="absent-grid" id="novatos-grid"></div>
     </div>
   </div>
 </section>
@@ -339,7 +341,8 @@ var BASE  = 'https://juannaya.github.io/JarraClarete';
 var OPEN_ICON = 'https://www.theopen.com/-/media/images/logo-the-open-symbol.png?w=640&hash=69A664BB4B30E4DCF2A2660C55782753';
 
 var JUGADORES_IDS = ['yago_mielgo','juan_naya','luciano_diaz','xulio_beiras','santi_gonzalez','jose_cuervo','jose_gonzalez','gabriel_miguel','javier_garcia','pedro_martinez'];
-var AUSENTES_IDS  = ['fernando_ortiz','juantxo_mielgo','manuel_gonzalez','manuel_orio'];
+var AUSENTES_IDS  = ['fernando_ortiz','juantxo_mielgo','manuel_gonzalez'];
+var NOVATOS_IDS   = ['manuel_orio'];
 var EDICIONES     = [{y:2025,l:'Sotogrande, Espa\u00f1a'},{y:2024,l:'Pedre\u00f1a, Espa\u00f1a'},{y:2023,l:'Kingsbarns, Escocia'},{y:2019,l:'St. Andrews, Escocia'},{y:2018,l:'Carnoustie, Escocia'}];
 var TEE_META      = [
   {date:'13 Mayo \u00b7 Mi\u00e9rcoles', course:'La Hacienda Links',      url:'https://lahaciendagolf.com/links-course/'},
@@ -489,12 +492,14 @@ async function loadPlayers() {
   absentGrid.innerHTML = '';
   var all    = await Promise.all(JUGADORES_IDS.map(function(id){ return fetchJSON('jugadores/'+id+'/profile.json'); }));
   var absAll = await Promise.all(AUSENTES_IDS.map(function(id){ return fetchJSON('jugadores/'+id+'/profile.json'); }));
+  var novAll = await Promise.all(NOVATOS_IDS.map(function(id){ return fetchJSON('jugadores/'+id+'/profile.json'); }));
   var activos = all.filter(Boolean).sort(function(a,b){ return a.handicap-b.handicap; });
   if (!activos.length) { grid.innerHTML = '<div class="loading">Sube los profile.json a GitHub.</div>'; }
   activos.forEach(function(p) {
     var ini = p.nombre.split(' ').map(function(w){return w[0];}).join('').slice(0,2).toUpperCase();
     var tags = (p.campeon||[]).map(function(c){
-      return '<a href="'+c.url+'" target="_blank" class="champ-tag"><img src="'+OPEN_ICON+'" onerror="this.style.display=\'none\'"> '+c.ano+' \u00b7 '+c.lugar+'</a>';
+      var anyo = c['año'] || c.ano || c.year || '?';
+      return '<a href="'+c.url+'" target="_blank" class="champ-tag"><img src="'+OPEN_ICON+'" onerror="this.style.display=\'none\'"> '+anyo+' \u00b7 '+c.lugar+'</a>';
     }).join('');
     grid.innerHTML += '<div class="player-card">'
       + '<div style="display:flex;align-items:center;gap:.8rem;margin-bottom:.7rem">'
@@ -509,6 +514,10 @@ async function loadPlayers() {
   });
   absAll.filter(Boolean).forEach(function(p) {
     absentGrid.innerHTML += '<div class="absent-card"><h3>'+p.nombre+'</h3><div class="absent-aka">aka '+p.alias+'</div><p>'+p.bio+'</p></div>';
+  });
+  var novatosGrid = document.getElementById('novatos-grid');
+  novAll.filter(Boolean).forEach(function(p) {
+    novatosGrid.innerHTML += '<div class="absent-card" style="border-color:rgba(201,168,76,.15)"><h3>'+p.nombre+'</h3><div class="absent-aka">aka '+p.alias+'</div><p>'+p.bio+'</p></div>';
   });
   return activos;
 }
