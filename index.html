@@ -627,7 +627,7 @@ function renderEditions() {
         if (esCurrent) {
           document.getElementById('gallery-'+anyo).innerHTML = '<div style="padding:1rem;font-size:.82rem;color:var(--muted);font-style:italic">Las fotos se iran subiendo durante el torneo.</div>';
           return;
-        }
+        } 
         return fetchJSON(anyo+'/fotos.json').then(function(fotos) {
           var gEl = document.getElementById('gallery-'+anyo);
           if (!fotos||!fotos.length) {
